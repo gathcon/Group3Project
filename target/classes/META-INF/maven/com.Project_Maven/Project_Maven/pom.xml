@@ -3,4 +3,11 @@
   <groupId>com.Project_Maven</groupId>
   <artifactId>Project_Maven</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+  <dependencies>
+  	<dependency>
+  		<groupId>javax.persistence</groupId>
+  		<artifactId>persistence-api</artifactId>
+  		<version>1.0.2</version>
+  	</dependency>
+  </dependencies>
 </project>
