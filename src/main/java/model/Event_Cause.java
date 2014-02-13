@@ -1,7 +1,9 @@
-package model;
+package Entity;
 
 import java.io.Serializable;
+
 import javax.persistence.*;
+
 import java.util.List;
 
 
@@ -24,6 +26,13 @@ public class Event_Cause implements Serializable {
 	private List<Base_Data> baseData;
 
 	public Event_Cause() {
+	}
+	
+	public Event_Cause(int cause_code, int event_id, String description) {
+		super();
+		Event_CausePK event_causePK = new Event_CausePK(cause_code, event_id);
+		this.id = event_causePK;
+		this.description = description;
 	}
 
 	public Event_CausePK getId() {
@@ -63,5 +72,4 @@ public class Event_Cause implements Serializable {
 
 		return baseData;
 	}
-
 }

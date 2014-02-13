@@ -1,32 +1,29 @@
-package main;
+package Main;
 
-import persistence.PersistenceUtil;
-import model.Failure;
-
+import java.util.List;
+import Persistence.PersistenceUtil;
+import Entity.Failure;
 
 public class FailureConfig {
+	
+	public static void main(String[] args){
+		FailureConfig config = new FailureConfig();
+	}
 
 	public FailureConfig(){
+		createFailure(1, "BAD EMERGENCY");
+	}
+
+	public void viewFailure(){
+		List<Failure> failures = PersistenceUtil.findAllFailures();
+		for(Failure f:failures){
+			System.out.println("Failure "+f.getFailureId()+ " exists.");
+		}
 	}
 	
-	public void createFailure(int failureId, String description){
-		Failure failure = new Failure();
-		failure.setFailureId(failureId);
-		failure.setDescription(description);
+	public void createFailure(int failure_id, String description){
+		Failure failure = new Failure(failure_id, description);
 		PersistenceUtil.persist(failure);
 		System.out.println("Failure registered");
-	}
-	
-	public void deleteFailure(int failureId){
-		Failure failure = getFailureById(failureId);
-		PersistenceUtil.remove(failure);
-		System.out.println("Failure deleted");
-	}
-	
-	public Failure getFailureById(int failureId){
-		Failure failure = PersistenceUtil.findFailureById(failureId);
-		return failure;
-	}
-			
-
+	}			
 }

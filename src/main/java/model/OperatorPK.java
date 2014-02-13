@@ -1,4 +1,4 @@
-package model;
+package Entity;
 
 import java.io.Serializable;
 import javax.persistence.*;
@@ -18,6 +18,13 @@ public class OperatorPK implements Serializable {
 
 	public OperatorPK() {
 	}
+	
+	public OperatorPK(int mcc, int mnc) {
+		super();
+		this.mcc = mcc;
+		this.mnc = mnc;
+	}
+	
 	public int getMcc() {
 		return this.mcc;
 	}

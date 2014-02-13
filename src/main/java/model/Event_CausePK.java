@@ -1,4 +1,4 @@
-package model;
+package Entity;
 
 import java.io.Serializable;
 import javax.persistence.*;
@@ -20,6 +20,12 @@ public class Event_CausePK implements Serializable {
 
 	public Event_CausePK() {
 	}
+	
+	public Event_CausePK(int cause_code, int event_id) {
+		this.causeCode = cause_code;
+		this.eventId = event_id;
+	}
+	
 	public int getCauseCode() {
 		return this.causeCode;
 	}

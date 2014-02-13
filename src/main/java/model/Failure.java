@@ -1,4 +1,4 @@
-package model;
+package Entity;
 
 import java.io.Serializable;
 
@@ -12,11 +12,7 @@ import java.util.List;
  * 
  */
 @Entity
-@NamedQueries( {
-	@NamedQuery(name="Failure.findAll", query="SELECT f FROM Failure f"),
-	@NamedQuery(name = "Failure.findById", query = "SELECT f FROM Failure f where f.failureId=:failureId"),
-})
-
+@NamedQuery(name="Failure.findAll", query="SELECT f FROM Failure f")
 public class Failure implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -31,6 +27,12 @@ public class Failure implements Serializable {
 	private List<Base_Data> baseData;
 
 	public Failure() {
+	}
+
+	public Failure(int failure_id, String description) {
+		super();
+		this.failureId = failure_id;
+		this.description = description;
 	}
 
 	public int getFailureId() {

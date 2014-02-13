@@ -1,7 +1,9 @@
-package model;
+package Entity;
 
 import java.io.Serializable;
+
 import javax.persistence.*;
+
 import java.util.List;
 
 
@@ -17,27 +19,27 @@ public class User_Equipment implements Serializable {
 	@Id
 	@Column(name="user_equipment_id")
 	private int userEquipmentId;
-
+	
+	@Column(name="marketing_name")
+	private String marketingName;
+	
+	private String manufacturer;
+	
 	@Column(name="access_capability")
 	private String accessCapability;
+	
+	private String model;
+	
+	@Column(name="vendor_name")
+	private String vendorName;
+	
+	@Column(name="ue_type")
+	private String ueType;
+	
+	private String os;
 
 	@Column(name="input_mode")
 	private String inputMode;
-
-	private String manufacturer;
-
-	@Column(name="marketing_name")
-	private String marketingName;
-
-	private String model;
-
-	private String os;
-
-	@Column(name="ue_type")
-	private String ueType;
-
-	@Column(name="vendor_name")
-	private String vendorName;
 
 	//bi-directional many-to-one association to Base_Data
 	@OneToMany(mappedBy="userEquipment")
@@ -46,11 +48,26 @@ public class User_Equipment implements Serializable {
 	public User_Equipment() {
 	}
 
-	public int getUserEquipmentId() {
+	public User_Equipment(int user_equipment_id, String marketing_name,
+			String manufacturer, String access_capability, String model,
+			String vendor_name, String ue_type, String os, String input_mode) {
+		super();
+		this.userEquipmentId = user_equipment_id;
+		this.marketingName = marketing_name;
+		this.manufacturer = manufacturer;
+		this.accessCapability = access_capability;
+		this.model = model;
+		this.vendorName = vendor_name;
+		this.ueType = ue_type;
+		this.os = os;
+		this.inputMode = input_mode;
+	}
+
+	public int getUser_EquipmentId() {
 		return this.userEquipmentId;
 	}
 
-	public void setUserEquipmentId(int userEquipmentId) {
+	public void setUser_EquipmentId(int userEquipmentId) {
 		this.userEquipmentId = userEquipmentId;
 	}
 

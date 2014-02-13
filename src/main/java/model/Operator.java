@@ -1,7 +1,9 @@
-package model;
+package Entity;
 
 import java.io.Serializable;
+
 import javax.persistence.*;
+
 import java.util.List;
 
 
@@ -27,6 +29,14 @@ public class Operator implements Serializable {
 	private List<Base_Data> baseData;
 
 	public Operator() {
+	}
+	
+	public Operator(int mcc, int mnc, String country, String operator) {
+		super();
+		OperatorPK operatorPK = new OperatorPK(mcc, mnc);
+		this.id = operatorPK;
+		this.country = country;
+		this.operatorName = operator;
 	}
 
 	public OperatorPK getId() {
