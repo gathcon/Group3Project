@@ -31,6 +31,7 @@ public class TestBaseDataTable {
 		BigInteger imsi = new BigInteger("344930000000011");
 		String neVersion = "11B";
 		Failure failure = 1;
+		
 		User_Equipment userEquipment = 21060800;
 		Event_Cause eventCause = 0;4098;
 		Operator operator = 930;

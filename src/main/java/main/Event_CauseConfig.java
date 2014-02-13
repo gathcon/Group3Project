@@ -1,8 +1,9 @@
-package Main;
+package main;
 
 import java.util.List;
-import Persistence.PersistenceUtil;
-import Entity.Event_Cause;
+import model.Event_Cause;
+
+import persistence.PersistenceUtil;
 
 public class Event_CauseConfig {
 	

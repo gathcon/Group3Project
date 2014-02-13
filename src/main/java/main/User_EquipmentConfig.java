@@ -1,8 +1,8 @@
-package Main;
+package main;
 
 import java.util.List;
-import Persistence.PersistenceUtil;
-import Entity.User_Equipment;
+import persistence.PersistenceUtil;
+import model.User_Equipment;
 
 public class User_EquipmentConfig {
 	

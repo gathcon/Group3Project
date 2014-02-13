@@ -1,8 +1,9 @@
-package Main;
+package main;
 
 import java.util.List;
-import Persistence.PersistenceUtil;
-import Entity.Operator;
+
+import persistence.PersistenceUtil;
+import model.Operator;
 
 public class OperatorConfig {
 	

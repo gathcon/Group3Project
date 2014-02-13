@@ -8,7 +8,10 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 import model.Base_Data;
+import model.Event_Cause;
 import model.Failure;
+import model.Operator;
+import model.User_Equipment;
 
 public class PersistenceUtil implements Serializable {
 	
@@ -86,6 +89,21 @@ public class PersistenceUtil implements Serializable {
 			return null;
 		else 
 			return rows.get(0);
+	}
+
+	public static List<Event_Cause> findAllEvent_Causes() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public static List<Operator> findAllOperators() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public static List<User_Equipment> findAllUser_Equipments() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 }
