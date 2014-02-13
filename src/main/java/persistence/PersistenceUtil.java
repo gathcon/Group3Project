@@ -7,9 +7,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+import model.Base_Data;
 import model.Failure;
-
-
 
 public class PersistenceUtil implements Serializable {
 	
@@ -66,6 +65,27 @@ public class PersistenceUtil implements Serializable {
 			return null;
 		else 
 			return failures.get(0);
+	}
+	
+	public static List<Base_Data> findAllRows(){
+		EntityManager em = emf.createEntityManager();
+		@SuppressWarnings("unchecked")
+		List<Base_Data> rows = (List<Base_Data>) em.createNamedQuery("E.findAll").getResultList();
+		em.close();
+		
+		return rows;
+		
+	}
+	
+	public static Base_Data findRowById(int id){
+		EntityManager em = emf.createEntityManager();
+		@SuppressWarnings("unchecked")
+		List<Base_Data> rows = (List<Base_Data>) em.createNamedQuery("E.findById").setParameter("dataId", id).getResultList();
+		em.close();
+		if (rows.size() == 0)
+			return null;
+		else 
+			return rows.get(0);
 	}
 	
 }

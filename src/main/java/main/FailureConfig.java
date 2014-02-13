@@ -3,7 +3,6 @@ package main;
 import persistence.PersistenceUtil;
 import model.Failure;
 
-
 public class FailureConfig {
 
 	public FailureConfig(){
