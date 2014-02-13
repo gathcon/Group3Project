@@ -15,7 +15,7 @@ public class PersistenceUtil implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
-	protected static EntityManagerFactory emf = Persistence.createEntityManagerFactory("project"); 	
+	protected static EntityManagerFactory emf = Persistence.createEntityManagerFactory("Project_Maven"); 	
 	
 	public static void persist(Object entity) {
 		EntityManager em = emf.createEntityManager();

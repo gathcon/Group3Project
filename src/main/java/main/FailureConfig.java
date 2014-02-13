@@ -5,13 +5,8 @@ import model.Failure;
 
 
 public class FailureConfig {
-	
-	public static void main(String[] args){
-		new FailureConfig();
-	}
 
 	public FailureConfig(){
-		createFailure(0, "description");
 	}
 	
 	public void createFailure(int failureId, String description){
@@ -20,6 +15,17 @@ public class FailureConfig {
 		failure.setDescription(description);
 		PersistenceUtil.persist(failure);
 		System.out.println("Failure registered");
+	}
+	
+	public void deleteFailure(int failureId){
+		Failure failure = getFailureById(failureId);
+		PersistenceUtil.remove(failure);
+		System.out.println("Failure deleted");
+	}
+	
+	public Failure getFailureById(int failureId){
+		Failure failure = PersistenceUtil.findFailureById(failureId);
+		return failure;
 	}
 			
 

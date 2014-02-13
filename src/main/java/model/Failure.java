@@ -1,7 +1,9 @@
 package model;
 
 import java.io.Serializable;
+
 import javax.persistence.*;
+
 import java.util.List;
 
 
@@ -10,7 +12,11 @@ import java.util.List;
  * 
  */
 @Entity
-@NamedQuery(name="Failure.findAll", query="SELECT f FROM Failure f")
+@NamedQueries( {
+	@NamedQuery(name="Failure.findAll", query="SELECT f FROM Failure f"),
+	@NamedQuery(name = "Failure.findById", query = "SELECT f FROM Failure f where f.failureId=:failureId"),
+})
+
 public class Failure implements Serializable {
 	private static final long serialVersionUID = 1L;
 
