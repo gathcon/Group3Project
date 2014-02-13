@@ -1,7 +1,9 @@
 package Entity;
 
 import java.io.Serializable;
+
 import javax.persistence.*;
+
 import java.math.BigInteger;
 import java.util.Date;
 
@@ -11,7 +13,10 @@ import java.util.Date;
  * 
  */
 @Entity
-@NamedQuery(name="Base_Data.findAll", query="SELECT b FROM Base_Data b")
+@NamedQueries( {
+	@NamedQuery(name="Base_Data.findAll", query="SELECT b FROM Base_Data b"),
+	@NamedQuery(name = "Base_Data.findById", query = "SELECT b FROM Base_Data b where b.dataId=:dataId"),
+})
 public class Base_Data implements Serializable {
 	private static final long serialVersionUID = 1L;
 
