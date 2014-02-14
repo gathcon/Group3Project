@@ -1,10 +1,14 @@
 package main;
 
+import java.util.List;
+
 import persistence.PersistenceUtil;
+import persistence.QueryFailure;
 import model.Failure;
+import model.MySqlTable;
 
 public class FailureConfig {
-
+	
 	public FailureConfig(){
 	}
 	
@@ -22,8 +26,15 @@ public class FailureConfig {
 		System.out.println("Failure deleted");
 	}
 	
+	private QueryFailure qf = new QueryFailure();
+
+	public List<MySqlTable> getAll() {
+		List<MySqlTable> failures = qf.findAllRows();
+		return failures;
+	}
+	
 	public Failure getFailureById(int failureId){
-		Failure failure = PersistenceUtil.findFailureById(failureId);
+		Failure failure = (Failure) qf.findRowById(failureId);
 		return failure;
 	}
 }

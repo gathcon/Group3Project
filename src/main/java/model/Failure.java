@@ -12,8 +12,11 @@ import java.util.List;
  * 
  */
 @Entity
-@NamedQuery(name="Failure.findAll", query="SELECT f FROM Failure f")
-public class Failure implements Serializable {
+@NamedQueries( {
+	@NamedQuery(name = "Failure.findAll", query = "SELECT f FROM Failure f"),
+	@NamedQuery(name = "Failure.findById", query = "SELECT f FROM Failure f where f.failureId=:failureId"),
+})
+public class Failure extends MySqlTable implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id

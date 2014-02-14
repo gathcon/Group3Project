@@ -47,64 +47,6 @@ public class PersistenceUtil implements Serializable {
 
 	public static EntityManager createEM() {
 		return emf.createEntityManager();
-	}
-	
-	public static List<Failure> findAllFailures(){
-		EntityManager em = emf.createEntityManager();
-		@SuppressWarnings("unchecked")
-		List<Failure> failures = (List<Failure>) em.createNamedQuery("Failure.findAll").getResultList();
-		em.close();
-		
-		return failures;
-		
-	}
-	
-	public static Failure findFailureById(int failureId){
-		EntityManager em = emf.createEntityManager();
-		@SuppressWarnings("unchecked")
-		List<Failure> failures = (List<Failure>) em.createNamedQuery("Failure.findById").setParameter("failureId", failureId).getResultList();
-		em.close();
-		if (failures.size() == 0)
-			return null;
-		else 
-			return failures.get(0);
-	}
-	
-	public static List<Base_Data> findAllRows(){
-		EntityManager em = emf.createEntityManager();
-		@SuppressWarnings("unchecked")
-		List<Base_Data> rows = (List<Base_Data>) em.createNamedQuery("E.findAll").getResultList();
-		em.close();
-		
-		return rows;
-		
-	}
-	
-	public static Base_Data findRowById(int id){
-		EntityManager em = emf.createEntityManager();
-		@SuppressWarnings("unchecked")
-		List<Base_Data> rows = (List<Base_Data>) em.createNamedQuery("E.findById").setParameter("dataId", id).getResultList();
-		em.close();
-		if (rows.size() == 0)
-			return null;
-		else 
-			return rows.get(0);
-	}
-
-	public static List<Event_Cause> findAllEvent_Causes() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public static List<Operator> findAllOperators() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public static List<User_Equipment> findAllUser_Equipments() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
+	}	
 }
 

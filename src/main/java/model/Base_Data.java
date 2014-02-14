@@ -17,7 +17,7 @@ import java.util.Date;
 	@NamedQuery(name="Base_Data.findAll", query="SELECT b FROM Base_Data b"),
 	@NamedQuery(name = "Base_Data.findById", query = "SELECT b FROM Base_Data b where b.dataId=:dataId"),
 })
-public class Base_Data implements Serializable {
+public class Base_Data extends MySqlTable implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
