@@ -25,11 +25,13 @@ public class FailureConfig implements ITableConfigurations {
 		Failure failure = queryFailure.findRowById(id);
 		return failure;
 	}
-	
-	public void viewRow() {
-		List<Failure> failures = PersistenceUtil.findAllFailures();		//Need to return a list of Failures instead of MySqlTables.
-		for(Failure f:failures){
-			System.out.println("Failure "+f.getFailureId()+ " exists.");
+
+	public List<MySqlTable> viewRow() {
+		QueryFailure queryFailure = new QueryFailure();
+		List<MySqlTable> failures = queryFailure.findAllRows();		//Need to return a list of Failures instead of MySqlTables.
+		for(MySqlTable f:failures){
+			System.out.println("Failure "+((Failure) f).getFailureId()+ " exists.");
 		}
+		return failures;
 	}
 }

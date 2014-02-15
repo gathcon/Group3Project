@@ -1,10 +1,12 @@
 package main;
 
+import java.util.List;
+
 import model.MySqlTable;
 
 public interface ITableConfigurations {
 	
-	public void viewRow();
+	public List<MySqlTable> viewRow();
 	
 	public void createRow(MySqlTable myRow);
 	
