@@ -51,27 +51,6 @@ public class PersistenceUtil implements Serializable {
 		return emf.createEntityManager();
 	}
 	
-	public static List<Failure> findAllFailures(){
-		EntityManager em = emf.createEntityManager();
-		List<Failure> failures = (List<Failure>) em.createNamedQuery("Failure.findAll").getResultList();
-		em.close();
-		
-		return failures;	
-	}
-	
-	public static Failure findFailureById(int failure_id){
-		
-		EntityManager em = emf.createEntityManager();
-		List<Failure> failures = (List<Failure>) em.createNamedQuery("Failure.findByFailureId").
-				setParameter("failureId", failure_id).getResultList();
-		em.close();
-		
-		if (failures.size() == 0)
-			return null;
-		else 
-			return failures.get(0);
-	}
-	
 	public static List<Base_Data> findAllBase_Datas(){
 		EntityManager em = emf.createEntityManager();
 		@SuppressWarnings("unchecked")
