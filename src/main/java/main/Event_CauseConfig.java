@@ -5,42 +5,39 @@ import java.util.List;
 import persistence.PersistenceUtil;
 import persistence.QueryEvent_Cause;
 import model.Event_Cause;
-import model.Event_CausePK;
+import model.MySqlTable;
 
-public class Event_CauseConfig {
-	
-	public static void main(String[] args){
-		Event_CauseConfig config = new Event_CauseConfig();
-	}
+public class Event_CauseConfig implements ITableConfigurations{
 
 	public Event_CauseConfig(){
-		createEvent_Cause(2, 5002, "RRC CONN SETUP-SUCCESS");
-		Event_CausePK event_causePK = new Event_CausePK(0, 4097);
-		deleteEvent_Cause(event_causePK);
+//		Event_Cause event_Cause = new Event_Cause(2, 5002, "RRC CONN SETUP-SUCCESS");
+//		createRow(event_Cause);
+//		Event_Cause deleteEvent_Cause = new Event_Cause(2, 5002, "RRC CONN SETUP-SUCCESS");
+//		deleteRow(deleteEvent_Cause);
 	}
 
-	public void viewEvent_Cause(){
-		List<Event_Cause> event_causes = PersistenceUtil.findAllEvent_Causes();	//Need to return a list of Event_Causes instead of MySqlTables.
-		for(Event_Cause ec:event_causes){
-			System.out.println("Event_Cause "+ec.getId()+ " exists.");
-		}
-	}
-	
-	public void createEvent_Cause(int cause_code, int event_id, String description){			
-		Event_Cause event_cause = new Event_Cause(cause_code, event_id, description);
-		PersistenceUtil.persist(event_cause);
-		System.out.println("Event_Cause registered");
-	}	
-	
-	public void deleteEvent_Cause(Event_CausePK event_causePK){
-		Event_Cause event_cause = getEvent_CauseById(event_causePK);
-		PersistenceUtil.remove(event_cause);			//QueryFailure doesn't have delete failure method.
-		System.out.println("Event_Cause deleted");
-	}
-	
-	public Event_Cause getEvent_CauseById(Event_CausePK event_causePK){
+	public List<MySqlTable> viewRow() {
 		QueryEvent_Cause queryEvent_Cause = new QueryEvent_Cause();
-		Event_Cause event_cause = queryEvent_Cause.findRowById(event_causePK);
+		List<MySqlTable> event_causes = queryEvent_Cause.findAllRows();
+		for(MySqlTable ec:event_causes){
+			System.out.println("Event_Cause "+((Event_Cause) ec).getId()+ " exists.");
+		}
+		return event_causes;
+	}
+
+	public <T> MySqlTable getRowById(T id) {
+		QueryEvent_Cause queryEvent_Cause = new QueryEvent_Cause();
+		Event_Cause event_cause = queryEvent_Cause.findRowById(id);
 		return event_cause;
+	}
+
+	public void createRow(MySqlTable row) {
+		PersistenceUtil.persist(row);
+		System.out.println("Event_Cause registered");
+	}
+
+	public void deleteRow(MySqlTable row) {
+		PersistenceUtil.remove(row);
+		System.out.println("Event_Cause deleted");
 	}
 }

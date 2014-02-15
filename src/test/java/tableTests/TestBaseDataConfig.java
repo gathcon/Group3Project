@@ -15,10 +15,10 @@ import model.Failure;
 import model.Operator;
 import model.User_Equipment;
 
-public class TestBaseDataTable {
-	
-	@Test
-	public void testBaseDataTable() {
+public class TestBaseDataConfig extends AbstractTestConfig {
+
+	@Override
+	public void testCreateDeleteRow() {
 //		BaseDataConfig baseDataConfig = new BaseDataConfig();
 //		
 //		int dataId = 10;
@@ -43,7 +43,13 @@ public class TestBaseDataTable {
 //		baseDataConfig.deleteRow(dataId);
 //		
 //		assertNotNull(baseData);
-//		assertEquals(description, baseData.getDateTime());
+//		assertEquals(description, baseData.getDateTime());		
+	}
+
+	@Override
+	public void testList() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

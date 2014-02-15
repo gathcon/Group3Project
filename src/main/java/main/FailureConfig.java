@@ -15,8 +15,7 @@ public class FailureConfig implements ITableConfigurations {
 	}
 
 	public void deleteRow(MySqlTable row) {
-		Failure failure = (Failure) getRowById(((Failure) row).getFailureId());
-		PersistenceUtil.remove(failure);		//QueryFailure doesn't have delete failure yet.
+		PersistenceUtil.remove(row);
 		System.out.println("Failure deleted");
 	}
 
@@ -28,7 +27,7 @@ public class FailureConfig implements ITableConfigurations {
 
 	public List<MySqlTable> viewRow() {
 		QueryFailure queryFailure = new QueryFailure();
-		List<MySqlTable> failures = queryFailure.findAllRows();		//Need to return a list of Failures instead of MySqlTables.
+		List<MySqlTable> failures = queryFailure.findAllRows();
 		for(MySqlTable f:failures){
 			System.out.println("Failure "+((Failure) f).getFailureId()+ " exists.");
 		}

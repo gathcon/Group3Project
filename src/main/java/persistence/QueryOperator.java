@@ -9,7 +9,6 @@ import javax.persistence.Persistence;
 
 import model.Operator;
 import model.MySqlTable;
-import model.OperatorPK;
 
 public class QueryOperator implements Serializable, ITableQueries {
 	

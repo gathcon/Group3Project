@@ -9,7 +9,6 @@ import javax.persistence.Persistence;
 
 import model.Event_Cause;
 import model.MySqlTable;
-import model.Event_CausePK;
 
 public class QueryEvent_Cause implements Serializable, ITableQueries {
 	

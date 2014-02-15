@@ -5,16 +5,14 @@ import static org.junit.Assert.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.Test;
-
 import main.FailureConfig;
 import model.Failure;
 import model.MySqlTable;
 
-public class TestFailureTable {
-	
-	@Test
-	public void testFailureTable() {
+public class TestFailureConfig extends AbstractTestConfig {
+
+	public void testCreateDeleteRow() {
+		
 		FailureConfig failureConfig = new FailureConfig();
 		
 		int id = 10;
@@ -30,10 +28,10 @@ public class TestFailureTable {
 		
 		assertNotNull(failure);
 		assertEquals(description, failure.getDescription());
+		
 	}
-	
-	@Test
-	public void testQueryFailure() {
+
+	public void testList() {
 		
 		FailureConfig failureConfig = new FailureConfig();
 		
@@ -63,7 +61,7 @@ public class TestFailureTable {
 		failureConfig.deleteRow(row2);
 		
 		assertNotNull(rows);
-		assertEquals(expected, rows);
+		assertArrayEquals(expected.toArray(), rows.toArray());
 	}
 
 }

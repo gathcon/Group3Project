@@ -4,44 +4,41 @@ import java.util.List;
 
 import persistence.PersistenceUtil;
 import persistence.QueryUser_Equipment;
+import model.MySqlTable;
 import model.User_Equipment;
 
-public class User_EquipmentConfig {
-	
-	public static void main(String[] args){
-		User_EquipmentConfig config = new User_EquipmentConfig();
-	}
+public class User_EquipmentConfig implements ITableConfigurations{
 
 	public User_EquipmentConfig(){
-		createUser_Equipment(50002, "G410", "Mitsubishi", "GSM 1800, GSM 900", "G410", "Mitsubishi", "test", "test", "test");
-		deleteUser_Equipment(50001);
+		User_Equipment user_Equipment = new User_Equipment(50002, "G410", "Mitsubishi", "GSM 1800, GSM 900", "G410", "Mitsubishi", "test", "test", "test");
+		createRow(user_Equipment);
+		User_Equipment deleteUser_Equipment = new User_Equipment(50100, "G410", "Mitsubishi", "GSM 1800, GSM 900", "G410", "Mitsubishi", "test", "test", "test");
+		deleteRow(deleteUser_Equipment);
 	}
 
-	public void viewUser_Equipment(){
-		List<User_Equipment> user_equipments = PersistenceUtil.findAllUser_Equipments(); //Need to return a list of User_Equipments instead of MySqlTables.
-		for(User_Equipment ue:user_equipments){
-			System.out.println("User_Equipment "+ue.getUser_EquipmentId()+ " exists.");
+	public List<MySqlTable> viewRow() {
+		QueryUser_Equipment queryUser_Equipment = new QueryUser_Equipment();
+		List<MySqlTable> user_equipments = queryUser_Equipment.findAllRows(); //Need to return a list of User_Equipments instead of MySqlTables.
+		for(MySqlTable ue:user_equipments){
+			System.out.println("User_Equipment "+((User_Equipment) ue).getUser_EquipmentId()+ " exists.");
 		}
+		return user_equipments;
 	}
 	
-	public void createUser_Equipment(int user_equipment_id, String marketing_name, String manufacturer, String access_capability,
-										String model, String vendor_name, String ue_type, String os, String input_mode){
-		
-		User_Equipment user_equipment = new User_Equipment(user_equipment_id, marketing_name, manufacturer, access_capability,
-															model, vendor_name, ue_type, os, input_mode);
-		PersistenceUtil.persist(user_equipment);
+	public <T> MySqlTable getRowById(T id) {
+		QueryUser_Equipment queryUser_Equipment = new QueryUser_Equipment();
+		User_Equipment user_equipment = queryUser_Equipment.findRowById(id);
+		return user_equipment;
+	}
+
+	public void createRow(MySqlTable myRow) {
+		PersistenceUtil.persist(myRow);
 		System.out.println("User_Equipment registered");
-	}		
-	
-	public void deleteUser_Equipment(int user_equipmentId){
-		User_Equipment user_equipment = getUser_EquipmentById(user_equipmentId);
-		PersistenceUtil.remove(user_equipment);
+	}
+
+	public void deleteRow(MySqlTable myRow) {
+		PersistenceUtil.remove(myRow);
 		System.out.println("User_Equipment deleted");
 	}
 	
-	public User_Equipment getUser_EquipmentById(int user_equipmentId){
-		QueryUser_Equipment queryUser_Equipment = new QueryUser_Equipment();
-		User_Equipment user_equipment = queryUser_Equipment.findRowById(user_equipmentId);
-		return user_equipment;
-	}
 }

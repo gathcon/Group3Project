@@ -12,7 +12,10 @@ import java.util.List;
  * 
  */
 @Entity
-@NamedQuery(name="Operator.findAll", query="SELECT o FROM Operator o")
+@NamedQueries( {
+	@NamedQuery(name="Operator.findAll", query="SELECT o FROM Operator o"),
+	@NamedQuery(name = "Operator.findById", query = "SELECT o FROM Operator o where o.id=:id"),
+})
 public class Operator extends MySqlTable implements Serializable {
 	private static final long serialVersionUID = 1L;
 
