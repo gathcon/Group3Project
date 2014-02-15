@@ -14,24 +14,23 @@ public class QueryFailure implements Serializable, ITableQueries {
 	
 private static final long serialVersionUID = 1L;
 	
-	protected static EntityManagerFactory emf = Persistence.createEntityManagerFactory("Project_Maven");
+	protected static EntityManagerFactory emf = Persistence.createEntityManagerFactory("project");
 
 	public static EntityManager createEM() {
 		return emf.createEntityManager();
 	}
 
-	@Override
+	@SuppressWarnings("unchecked")
 	public List<MySqlTable> findAllRows() {
 		EntityManager em = emf.createEntityManager();
-		@SuppressWarnings("unchecked")
 		List<MySqlTable> failures = (List<MySqlTable>) em.createNamedQuery("Failure.findAll").getResultList();
 		em.close();
 		
 		return failures;
 	}
 
-	@Override
-	public <T> MySqlTable findRowById(T id) {
+	@SuppressWarnings("unchecked")
+	public <T> Failure findRowById(T id) {
 		EntityManager em = emf.createEntityManager();
 		List<Failure> failures = (List<Failure>) em.createNamedQuery("Failure.findById").setParameter("failureId", id).getResultList();
 		em.close();
@@ -40,7 +39,4 @@ private static final long serialVersionUID = 1L;
 		else 
 			return failures.get(0);
 	}
-
-
-
 }

@@ -7,7 +7,7 @@ import java.sql.Date;
 
 import org.junit.Test;
 
-import main.BaseDataConfig;
+import main.Base_DataConfig;
 import main.FailureConfig;
 import model.Base_Data;
 import model.Event_Cause;

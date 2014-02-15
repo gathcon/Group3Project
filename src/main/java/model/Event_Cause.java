@@ -13,7 +13,7 @@ import java.util.List;
  */
 @Entity
 @NamedQuery(name="Event_Cause.findAll", query="SELECT e FROM Event_Cause e")
-public class Event_Cause implements Serializable {
+public class Event_Cause extends MySqlTable implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@EmbeddedId

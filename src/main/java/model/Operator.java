@@ -13,7 +13,7 @@ import java.util.List;
  */
 @Entity
 @NamedQuery(name="Operator.findAll", query="SELECT o FROM Operator o")
-public class Operator implements Serializable {
+public class Operator extends MySqlTable implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@EmbeddedId

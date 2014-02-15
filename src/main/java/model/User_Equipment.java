@@ -13,7 +13,7 @@ import java.util.List;
  */
 @Entity
 @NamedQuery(name="User_Equipment.findAll", query="SELECT u FROM User_Equipment u")
-public class User_Equipment implements Serializable {
+public class User_Equipment extends MySqlTable implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id

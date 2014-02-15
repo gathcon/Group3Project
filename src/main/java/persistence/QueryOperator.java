@@ -7,36 +7,38 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+import model.Operator;
+import model.MySqlTable;
+import model.OperatorPK;
+
 public class QueryOperator implements Serializable, ITableQueries {
 	
 private static final long serialVersionUID = 1L;
 	
-	protected static EntityManagerFactory emf = Persistence.createEntityManagerFactory("Project_Maven");
+	protected static EntityManagerFactory emf = Persistence.createEntityManagerFactory("project");
 
 	public static EntityManager createEM() {
 		return emf.createEntityManager();
 	}
 
-	@Override
-	public <T> List<T> findAllRows() {
+	public List<MySqlTable> findAllRows() {
 		EntityManager em = emf.createEntityManager();
 		@SuppressWarnings("unchecked")
-		List<T> operators = (List<T>) em.createNamedQuery("Operator.findAll").getResultList();
+		List<MySqlTable> operators = (List<MySqlTable>) em.createNamedQuery("Operator.findAll").getResultList();
 		em.close();
 		
 		return operators;
 	}
 
-	@SuppressWarnings("unchecked")
-	@Override
-	public <T> List<T> findRowById(int id) {
+	public <T> Operator findRowById(T operatorPK) {
 		EntityManager em = emf.createEntityManager();
-		List<T> operators = (List<T>) em.createNamedQuery("Operator.findById").setParameter("OperatorId", id).getResultList();
+		@SuppressWarnings("unchecked")
+		List<Operator> operators = (List<Operator>) em.createNamedQuery("Operator.findById").
+		setParameter("id", operatorPK).getResultList();
 		em.close();
 		if (operators.size() == 0)
 			return null;
 		else 
-			return (List<T>) operators.get(0);
+			return operators.get(0);
 	}
-
 }

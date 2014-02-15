@@ -16,9 +16,13 @@ public class TestFailureTable {
 		int id = 10;
 		String description = "This is a test description";
 		
-		failureConfig.createFailure(id, description);
-		Failure failure = failureConfig.getFailureById(id);
-		failureConfig.deleteFailure(id);
+		Failure row = new Failure();
+		row.setFailureId(id);
+		row.setDescription(description);
+		
+		failureConfig.createRow(row);
+		Failure failure = (Failure) failureConfig.getRowById(id);
+		failureConfig.deleteRow(row);
 		
 		assertNotNull(failure);
 		assertEquals(description, failure.getDescription());
