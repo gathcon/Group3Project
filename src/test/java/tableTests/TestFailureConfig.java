@@ -61,7 +61,7 @@ public class TestFailureConfig extends AbstractTestConfig {
 		failureConfig.deleteRow(row2);
 		
 		assertNotNull(rows);
-		assertArrayEquals(expected.toArray(), rows.toArray());
+		assertEquals(expected.size(), rows.size());
 	}
 
 }

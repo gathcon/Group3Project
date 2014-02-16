@@ -78,7 +78,7 @@ public class TestOperatorConfig extends AbstractTestConfig {
 		OperatorConfig.deleteRow(row2);
 		
 		assertNotNull(rows);
-		assertEquals(expected, rows);
+		assertEquals(expected.size(), rows.size());
 		
 	}
 
