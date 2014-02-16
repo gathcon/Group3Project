@@ -2,12 +2,11 @@ package main;
 
 import java.util.List;
 
-import persistence.PersistenceUtil;
 import persistence.QueryUser_Equipment;
 import model.MySqlTable;
 import model.User_Equipment;
 
-public class User_EquipmentConfig implements ITableConfigurations{
+public class User_EquipmentConfig extends AbstractTableConfig{
 
 	public User_EquipmentConfig(){
 		User_Equipment user_Equipment = new User_Equipment(50002, "G410", "Mitsubishi", "GSM 1800, GSM 900", "G410", "Mitsubishi", "test", "test", "test");
@@ -18,7 +17,7 @@ public class User_EquipmentConfig implements ITableConfigurations{
 
 	public List<MySqlTable> viewRow() {
 		QueryUser_Equipment queryUser_Equipment = new QueryUser_Equipment();
-		List<MySqlTable> user_equipments = queryUser_Equipment.findAllRows(); //Need to return a list of User_Equipments instead of MySqlTables.
+		List<MySqlTable> user_equipments = queryUser_Equipment.findAllRows();
 		for(MySqlTable ue:user_equipments){
 			System.out.println("User_Equipment "+((User_Equipment) ue).getUser_EquipmentId()+ " exists.");
 		}
@@ -29,16 +28,6 @@ public class User_EquipmentConfig implements ITableConfigurations{
 		QueryUser_Equipment queryUser_Equipment = new QueryUser_Equipment();
 		User_Equipment user_equipment = queryUser_Equipment.findRowById(id);
 		return user_equipment;
-	}
-
-	public void createRow(MySqlTable myRow) {
-		PersistenceUtil.persist(myRow);
-		System.out.println("User_Equipment registered");
-	}
-
-	public void deleteRow(MySqlTable myRow) {
-		PersistenceUtil.remove(myRow);
-		System.out.println("User_Equipment deleted");
 	}
 	
 }

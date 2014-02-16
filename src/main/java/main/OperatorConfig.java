@@ -2,12 +2,11 @@ package main;
 
 import java.util.List;
 
-import persistence.PersistenceUtil;
 import persistence.QueryOperator;
 import model.MySqlTable;
 import model.Operator;
 
-public class OperatorConfig implements ITableConfigurations{
+public class OperatorConfig extends AbstractTableConfig{
 
 	public List<MySqlTable> viewRow() {
 		QueryOperator queryOperator = new QueryOperator();
@@ -22,16 +21,6 @@ public class OperatorConfig implements ITableConfigurations{
 		QueryOperator queryOperator = new QueryOperator();
 		Operator operator = queryOperator.findRowById(id);
 		return operator;
-	}
-
-	public void createRow(MySqlTable row) {
-		PersistenceUtil.persist(row);
-		System.out.println("Operator registered");
-	}
-
-	public void deleteRow(MySqlTable row) {
-		PersistenceUtil.remove(row);
-		System.out.println("Operator deleted");
 	}
 	
 }

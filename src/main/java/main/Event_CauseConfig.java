@@ -2,12 +2,11 @@ package main;
 
 import java.util.List;
 
-import persistence.PersistenceUtil;
 import persistence.QueryEvent_Cause;
 import model.Event_Cause;
 import model.MySqlTable;
 
-public class Event_CauseConfig implements ITableConfigurations{
+public class Event_CauseConfig extends AbstractTableConfig{
 
 	public Event_CauseConfig(){
 //		Event_Cause event_Cause = new Event_Cause(2, 5002, "RRC CONN SETUP-SUCCESS");
@@ -30,14 +29,5 @@ public class Event_CauseConfig implements ITableConfigurations{
 		Event_Cause event_cause = queryEvent_Cause.findRowById(id);
 		return event_cause;
 	}
-
-	public void createRow(MySqlTable row) {
-		PersistenceUtil.persist(row);
-		System.out.println("Event_Cause registered");
-	}
-
-	public void deleteRow(MySqlTable row) {
-		PersistenceUtil.remove(row);
-		System.out.println("Event_Cause deleted");
-	}
+	
 }

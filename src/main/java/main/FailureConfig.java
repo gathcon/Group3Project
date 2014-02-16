@@ -7,17 +7,7 @@ import persistence.QueryFailure;
 import model.Failure;
 import model.MySqlTable;
 
-public class FailureConfig implements ITableConfigurations {
-	
-	public void createRow(MySqlTable row) {
-		PersistenceUtil.persist(row);
-		System.out.println("Failure registered");
-	}
-
-	public void deleteRow(MySqlTable row) {
-		PersistenceUtil.remove(row);
-		System.out.println("Failure deleted");
-	}
+public class FailureConfig extends AbstractTableConfig {
 
 	public <T> MySqlTable getRowById(T id) {
 		QueryFailure queryFailure = new QueryFailure();

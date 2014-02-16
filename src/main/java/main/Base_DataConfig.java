@@ -3,9 +3,8 @@ package main;
 import java.util.List;
 
 import model.MySqlTable;
-import persistence.PersistenceUtil;
 
-public class Base_DataConfig implements ITableConfigurations{
+public class Base_DataConfig extends AbstractTableConfig {
 	
 	public Base_DataConfig(){
 	}
@@ -25,16 +24,6 @@ public class Base_DataConfig implements ITableConfigurations{
 		//QueryBase_Data queryBase_Data = new QueryBase_Data();
 		//Base_Data data = queryBase_Data.findRowById(id);
 		//return data;
-	}
-
-	public void createRow(MySqlTable row) {
-		PersistenceUtil.persist(row);
-		System.out.println("Base_Data registered");
-	}
-
-	public void deleteRow(MySqlTable row) {
-		PersistenceUtil.remove(row);
-		System.out.println("Base_Data deleted");
 	}
 
 }
