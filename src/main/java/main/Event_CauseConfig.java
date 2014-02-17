@@ -8,13 +8,6 @@ import model.MySqlTable;
 
 public class Event_CauseConfig extends AbstractTableConfig{
 
-	public Event_CauseConfig(){
-//		Event_Cause event_Cause = new Event_Cause(2, 5002, "RRC CONN SETUP-SUCCESS");
-//		createRow(event_Cause);
-//		Event_Cause deleteEvent_Cause = new Event_Cause(2, 5002, "RRC CONN SETUP-SUCCESS");
-//		deleteRow(deleteEvent_Cause);
-	}
-
 	public List<MySqlTable> viewRow() {
 		QueryEvent_Cause queryEvent_Cause = new QueryEvent_Cause();
 		List<MySqlTable> event_causes = queryEvent_Cause.findAllRows();

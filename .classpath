@@ -6,9 +6,19 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry excluding="**" kind="src" output="target/classes" path="src/main/resources">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="src" output="target/test-classes" path="src/test/java">
 		<attributes>
 			<attribute name="optional" value="true"/>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry excluding="**" kind="src" output="target/test-classes" path="src/test/resources">
+		<attributes>
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
@@ -17,10 +27,6 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="lib/hibernate-annotations.jar"/>
-	<classpathentry kind="lib" path="lib/hibernate-commons-annotations.jar"/>
-	<classpathentry kind="lib" path="lib/hibernate-core.jar"/>
-	<classpathentry kind="lib" path="lib/hibernate-entitymanager.jar"/>
 	<classpathentry kind="lib" path="lib/hibernate3.jar"/>
 	<classpathentry kind="lib" path="lib/ejb3-persistence.jar"/>
 	<classpathentry kind="lib" path="lib/ant.jar"/>
@@ -57,6 +63,10 @@
 	<classpathentry kind="lib" path="lib/slf4j-api-1.5.8.jar"/>
 	<classpathentry kind="lib" path="lib/slf4j-simple-1.5.8.jar"/>
 	<classpathentry kind="lib" path="lib/standard-1.0.6.jar"/>
+	<classpathentry kind="lib" path="lib/hibernate-annotations.jar"/>
+	<classpathentry kind="lib" path="lib/hibernate-commons-annotations.jar"/>
+	<classpathentry kind="lib" path="lib/hibernate-core.jar"/>
+	<classpathentry kind="lib" path="lib/hibernate-entitymanager.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7">
 		<attributes>
 			<attribute name="maven.pomderived" value="true"/>

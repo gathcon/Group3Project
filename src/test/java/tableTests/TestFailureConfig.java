@@ -11,43 +11,29 @@ import model.MySqlTable;
 
 public class TestFailureConfig extends AbstractTestConfig {
 
+	@Override
 	public void testCreateDeleteRow() {
 		
 		FailureConfig failureConfig = new FailureConfig();
 		
-		int id = 10;
-		String description = "This is a test description";
+		Failure expected = TestData.getFailure(10, "Test Description");
 		
-		Failure row = new Failure();
-		row.setFailureId(id);
-		row.setDescription(description);
+		failureConfig.createRow(expected);
+		Failure result = (Failure) failureConfig.getRowById(expected.getFailureId());
+		failureConfig.deleteRow(expected);
 		
-		failureConfig.createRow(row);
-		Failure failure = (Failure) failureConfig.getRowById(id);
-		failureConfig.deleteRow(row);
-		
-		assertNotNull(failure);
-		assertEquals(description, failure.getDescription());
+		assertNotNull(result);
+		assertEquals(expected.getDescription(), result.getDescription());
 		
 	}
 
+	@Override
 	public void testList() {
 		
 		FailureConfig failureConfig = new FailureConfig();
 		
-		int id = 10;
-		String description = "This is a test description";
-		
-		MySqlTable row = new Failure();
-		((Failure) row).setFailureId(id);
-		((Failure) row).setDescription(description);
-		
-		int id2 = 11;
-		String description2 = "This is another test description";
-		
-		MySqlTable row2 = new Failure();
-		((Failure) row2).setFailureId(id2);
-		((Failure) row2).setDescription(description2);
+		MySqlTable row = TestData.getFailure(10, "Description 1");
+		MySqlTable row2 = TestData.getFailure(11, "Description 2");
 		
 		failureConfig.createRow(row);
 		failureConfig.createRow(row2);
@@ -55,13 +41,14 @@ public class TestFailureConfig extends AbstractTestConfig {
 		List<MySqlTable> expected = new ArrayList<MySqlTable>();
 		expected.add(row);
 		expected.add(row2);
-		List<MySqlTable> rows = failureConfig.viewRow();
+		
+		List<MySqlTable> result = failureConfig.viewRow();
 		
 		failureConfig.deleteRow(row);
 		failureConfig.deleteRow(row2);
 		
-		assertNotNull(rows);
-		assertEquals(expected.size(), rows.size());
+		assertNotNull(result);
+		assertEquals(expected.size(), result.size());
 	}
 
 }

@@ -2,7 +2,6 @@ package main;
 
 import java.util.List;
 
-import persistence.PersistenceUtil;
 import persistence.QueryFailure;
 import model.Failure;
 import model.MySqlTable;
