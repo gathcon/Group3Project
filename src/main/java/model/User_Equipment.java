@@ -12,7 +12,10 @@ import java.util.List;
  * 
  */
 @Entity
-@NamedQuery(name="User_Equipment.findAll", query="SELECT u FROM User_Equipment u")
+@NamedQueries( {
+	@NamedQuery(name="User_Equipment.findAll", query="SELECT ue FROM User_Equipment ue"),
+	@NamedQuery(name = "User_Equipment.findById", query = "SELECT ue FROM User_Equipment ue where ue.userEquipmentId=:userEquipmentId"),
+})
 public class User_Equipment extends MySqlTable implements Serializable {
 	private static final long serialVersionUID = 1L;
 
