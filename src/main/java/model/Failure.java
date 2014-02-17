@@ -32,12 +32,6 @@ public class Failure extends MySqlTable implements Serializable {
 	public Failure() {
 	}
 
-	public Failure(int failure_id, String description) {
-		super();
-		this.failureId = failure_id;
-		this.description = description;
-	}
-
 	public int getFailureId() {
 		return this.failureId;
 	}

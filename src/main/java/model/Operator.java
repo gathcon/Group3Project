@@ -33,14 +33,6 @@ public class Operator extends MySqlTable implements Serializable {
 
 	public Operator() {
 	}
-	
-	public Operator(int mcc, int mnc, String country, String operator) {
-		super();
-		OperatorPK operatorPK = new OperatorPK(mcc, mnc);
-		this.id = operatorPK;
-		this.country = country;
-		this.operatorName = operator;
-	}
 
 	public OperatorPK getId() {
 		return this.id;

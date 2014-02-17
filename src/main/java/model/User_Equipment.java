@@ -51,21 +51,6 @@ public class User_Equipment extends MySqlTable implements Serializable {
 	public User_Equipment() {
 	}
 
-	public User_Equipment(int user_equipment_id, String marketing_name,
-			String manufacturer, String access_capability, String model,
-			String vendor_name, String ue_type, String os, String input_mode) {
-		super();
-		this.userEquipmentId = user_equipment_id;
-		this.marketingName = marketing_name;
-		this.manufacturer = manufacturer;
-		this.accessCapability = access_capability;
-		this.model = model;
-		this.vendorName = vendor_name;
-		this.ueType = ue_type;
-		this.os = os;
-		this.inputMode = input_mode;
-	}
-
 	public int getUser_EquipmentId() {
 		return this.userEquipmentId;
 	}

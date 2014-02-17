@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import main.EntityCreator;
 import main.User_EquipmentConfig;
 import model.User_Equipment;
 import model.MySqlTable;
@@ -16,7 +17,7 @@ public class TestUser_EquipmentConfig extends AbstractTestConfig {
 		
 		User_EquipmentConfig user_EquipmentConfig = new User_EquipmentConfig();
 		
-		User_Equipment expected = TestData.getUser_Equipment(990, "G410", "Mitsubishi", "GSM 1800, GSM 900",
+		User_Equipment expected = EntityCreator.getUser_Equipment(990, "G410", "Mitsubishi", "GSM 1800, GSM 900",
 				"G410", "Mitsubishi", "test", "test", "test");
 		
 		user_EquipmentConfig.createRow(expected);
@@ -39,9 +40,9 @@ public class TestUser_EquipmentConfig extends AbstractTestConfig {
 		
 		User_EquipmentConfig user_EquipmentConfig = new User_EquipmentConfig();
 		
-		MySqlTable row = TestData.getUser_Equipment(991, "G410", "Mitsubishi", "GSM 1800, GSM 900",
+		MySqlTable row = EntityCreator.getUser_Equipment(991, "G410", "Mitsubishi", "GSM 1800, GSM 900",
 				"G410", "Mitsubishi", "test1", "test1", "test1");
-		MySqlTable row2 = TestData.getUser_Equipment(992, "Galaxy", "Samsung", "GSM 1800, GSM 900, GSM 850",
+		MySqlTable row2 = EntityCreator.getUser_Equipment(992, "Galaxy", "Samsung", "GSM 1800, GSM 900, GSM 850",
 				"Galaxy", "Samsung", "test2", "test2", "test2");
 		
 		user_EquipmentConfig.createRow(row);
