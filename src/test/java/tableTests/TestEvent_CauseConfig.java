@@ -6,6 +6,7 @@ import static org.junit.Assert.assertNotNull;
 import java.util.ArrayList;
 import java.util.List;
 
+import main.EntityCreator;
 import main.Event_CauseConfig;
 import model.Event_Cause;
 import model.MySqlTable;
@@ -17,7 +18,7 @@ public class TestEvent_CauseConfig extends AbstractTestConfig {
 		
 		Event_CauseConfig Event_CauseConfig = new Event_CauseConfig();
 		
-		Event_Cause expected = TestData.getEvent_Cause(0, 4097, "RRC CONN SETUP-SUCCESS");
+		Event_Cause expected = EntityCreator.getEvent_Cause(0, 4097, "RRC CONN SETUP-SUCCESS");
 		
 		Event_CauseConfig.createRow(expected);
 		Event_Cause result = (Event_Cause) Event_CauseConfig.getRowById(expected.getId());
@@ -33,8 +34,8 @@ public class TestEvent_CauseConfig extends AbstractTestConfig {
 
 		Event_CauseConfig event_CauseConfig = new Event_CauseConfig();
 		
-		Event_Cause row = TestData.getEvent_Cause(0, 4097, "RRC CONN SETUP-SUCCESS");
-		Event_Cause row2 = TestData.getEvent_Cause(1, 4097, "RRC CONN SETUP-UNSPECIFIED");
+		Event_Cause row = EntityCreator.getEvent_Cause(0, 4097, "RRC CONN SETUP-SUCCESS");
+		Event_Cause row2 = EntityCreator.getEvent_Cause(1, 4097, "RRC CONN SETUP-UNSPECIFIED");
 		
 		event_CauseConfig.createRow(row);
 		event_CauseConfig.createRow(row2);

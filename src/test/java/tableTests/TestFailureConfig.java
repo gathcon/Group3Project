@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import main.EntityCreator;
 import main.FailureConfig;
 import model.Failure;
 import model.MySqlTable;
@@ -16,7 +17,7 @@ public class TestFailureConfig extends AbstractTestConfig {
 		
 		FailureConfig failureConfig = new FailureConfig();
 		
-		Failure expected = TestData.getFailure(10, "Test Description");
+		Failure expected = EntityCreator.getFailure(10, "Test Description");
 		
 		failureConfig.createRow(expected);
 		Failure result = (Failure) failureConfig.getRowById(expected.getFailureId());
@@ -32,8 +33,8 @@ public class TestFailureConfig extends AbstractTestConfig {
 		
 		FailureConfig failureConfig = new FailureConfig();
 		
-		MySqlTable row = TestData.getFailure(10, "Description 1");
-		MySqlTable row2 = TestData.getFailure(11, "Description 2");
+		MySqlTable row = EntityCreator.getFailure(10, "Description 1");
+		MySqlTable row2 = EntityCreator.getFailure(11, "Description 2");
 		
 		failureConfig.createRow(row);
 		failureConfig.createRow(row2);

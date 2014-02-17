@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import main.EntityCreator;
 import main.OperatorConfig;
 import model.Operator;
 import model.MySqlTable;
@@ -16,7 +17,7 @@ public class TestOperatorConfig extends AbstractTestConfig {
 		
 		OperatorConfig operatorConfig = new OperatorConfig();
 		
-		Operator expected = TestData.getOperator(201, 4, "Ireland", "TDC-DK");
+		Operator expected = EntityCreator.getOperator(201, 4, "Ireland", "TDC-DK");
 		
 		operatorConfig.createRow(expected);
 		Operator result = (Operator) operatorConfig.getRowById(expected.getId());
@@ -33,8 +34,8 @@ public class TestOperatorConfig extends AbstractTestConfig {
 		
 		OperatorConfig OperatorConfig = new OperatorConfig();
 		
-		Operator row = TestData.getOperator(202, 4, "Ireland", "TDC-DK");
-		Operator row2 = TestData.getOperator(203, 4, "UK", "TDC-DK");
+		Operator row = EntityCreator.getOperator(202, 4, "Ireland", "TDC-DK");
+		Operator row2 = EntityCreator.getOperator(203, 4, "UK", "TDC-DK");
 		
 		OperatorConfig.createRow(row);
 		OperatorConfig.createRow(row2);
