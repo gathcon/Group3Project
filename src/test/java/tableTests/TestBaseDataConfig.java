@@ -56,15 +56,15 @@ public class TestBaseDataConfig extends AbstractTestConfig {
 		Base_Data expected = EntityCreator.getBase_Data(4, dateTime, 1000, hier3Id, hier32Id, hier321Id, imsi, neVersion, 
 				f, ue, ec, o);
 		
-//		f.addBaseData(expected);
-//		ue.addBaseData(expected);
-//		ec.addBaseData(expected);
-//		o.addBaseData(expected);
-		
 		baseDataConfig.createRow(expected);
 		
 		Base_Data result = (Base_Data) baseDataConfig.getRowById(expected.getDataId());
-		//baseDataConfig.deleteRow(expected);
+		baseDataConfig.deleteRow(expected);
+		
+		failureConfig.deleteRow(f);
+		userEquipmentConfig.deleteRow(ue);
+		eventCauseConfig.deleteRow(ec);
+		operatorConfig.deleteRow(o);
 		
 		assertNotNull(result);
 		assertEquals(expected.getCellId(), result.getCellId());
@@ -74,78 +74,68 @@ public class TestBaseDataConfig extends AbstractTestConfig {
 	@Override
 	public void testList() {
 		
-//		FailureConfig failureConfig = new FailureConfig();
-//		User_EquipmentConfig userEquipmentConfig = new User_EquipmentConfig();
-//		Event_CauseConfig eventCauseConfig = new Event_CauseConfig();
-//		OperatorConfig operatorConfig = new OperatorConfig();
-//		Base_DataConfig baseDataConfig = new Base_DataConfig();
-//		
-//		Failure f = EntityCreator.getFailure(15, "Test Description");
-//		Failure f2 = EntityCreator.getFailure(11, "Test Description");
-//		User_Equipment ue = EntityCreator.getUser_Equipment(995, "G410", "Mitsubishi", "GSM 1800, GSM 900",
-//				"G410", "Mitsubishi", "test1", "test1", "test1");
-//		User_Equipment ue2 = EntityCreator.getUser_Equipment(992, "G410", "Mitsubishi", "GSM 1800, GSM 900",
-//				"G410", "Mitsubishi", "test1", "test1", "test1");
-//		Event_Cause ec = EntityCreator.getEvent_Cause(0, 4098, "RRC CONN SETUP-SUCCESS");
-//		Event_Cause ec2 = EntityCreator.getEvent_Cause(1, 4098, "RRC CONN SETUP-SUCCESS");
-//		Operator o = EntityCreator.getOperator(203, 4, "Ireland", "TDC-DK");
-//		Operator o2 = EntityCreator.getOperator(202, 4, "Ireland", "TDC-DK");
-//		
-//		Calendar cal = Calendar.getInstance();
-//		cal.set(2013, 1, 11, 17, 15);
-//		Date dateTime = new Date();
-//		dateTime.setTime(cal.getTimeInMillis());
-//		BigInteger hier3Id = new BigInteger("4809532081614990336");
-//		BigInteger hier32Id = new BigInteger("8226896360947470336");
-//		BigInteger hier321Id = new BigInteger("1150444940909479936");
-//		BigInteger imsi = new BigInteger("344930000000011");
-//		String neVersion = "11B";
-//		
-//		failureConfig.createRow(f);
-//		failureConfig.createRow(f2);
-//		userEquipmentConfig.createRow(ue);
-//		userEquipmentConfig.createRow(ue2);
-//		eventCauseConfig.createRow(ec);
-//		eventCauseConfig.createRow(ec2);
-//		operatorConfig.createRow(o);
-//		operatorConfig.createRow(o2);
-//		
-//		Base_Data row = EntityCreator.getBase_Data(4, dateTime, 1000, hier3Id, hier32Id, hier321Id, imsi, neVersion);
-//		Base_Data row2 = EntityCreator.getBase_Data(4, dateTime, 1001, hier3Id, hier32Id, hier321Id, imsi, neVersion);
-//		
-//		f.addBaseData(row);
-//		ue.addBaseData(row);
-//		ec.addBaseData(row);
-//		o.addBaseData(row);
-//		
-//		f.addBaseData(row2);
-//		ue.addBaseData(row2);
-//		ec.addBaseData(row2);
-//		o.addBaseData(row2);
-//		
-//		baseDataConfig.createRow(row);
-//		baseDataConfig.createRow(row2);
-//		
-//		List<MySqlTable> expected = new ArrayList<MySqlTable>();
-//		expected.add(row);
-//		expected.add(row2);
-//		
-//		List<MySqlTable> result = baseDataConfig.viewRow();
-//		
-//		failureConfig.deleteRow(f);
-//		failureConfig.deleteRow(f2);
-//		userEquipmentConfig.deleteRow(ue);
-//		userEquipmentConfig.deleteRow(ue2);
-//		eventCauseConfig.deleteRow(ec);
-//		eventCauseConfig.deleteRow(ec2);
-//		operatorConfig.deleteRow(o);
-//		operatorConfig.deleteRow(o2);
-//		
-//		baseDataConfig.deleteRow(row);
-//		baseDataConfig.deleteRow(row2);
-//		
-//		assertNotNull(result);
-//		assertEquals(expected.size(), result.size());
+		FailureConfig failureConfig = new FailureConfig();
+		User_EquipmentConfig userEquipmentConfig = new User_EquipmentConfig();
+		Event_CauseConfig eventCauseConfig = new Event_CauseConfig();
+		OperatorConfig operatorConfig = new OperatorConfig();
+		Base_DataConfig baseDataConfig = new Base_DataConfig();
+		
+		Failure f = EntityCreator.getFailure(15, "Test Description");
+		Failure f2 = EntityCreator.getFailure(11, "Test Description");
+		User_Equipment ue = EntityCreator.getUser_Equipment(995, "G410", "Mitsubishi", "GSM 1800, GSM 900",
+				"G410", "Mitsubishi", "test1", "test1", "test1");
+		User_Equipment ue2 = EntityCreator.getUser_Equipment(992, "G410", "Mitsubishi", "GSM 1800, GSM 900",
+				"G410", "Mitsubishi", "test1", "test1", "test1");
+		Event_Cause ec = EntityCreator.getEvent_Cause(0, 4098, "RRC CONN SETUP-SUCCESS");
+		Event_Cause ec2 = EntityCreator.getEvent_Cause(1, 4098, "RRC CONN SETUP-SUCCESS");
+		Operator o = EntityCreator.getOperator(203, 4, "Ireland", "TDC-DK");
+		Operator o2 = EntityCreator.getOperator(202, 4, "Ireland", "TDC-DK");
+		
+		Calendar cal = Calendar.getInstance();
+		cal.set(2013, 1, 11, 17, 15);
+		Date dateTime = new Date();
+		dateTime.setTime(cal.getTimeInMillis());
+		BigInteger hier3Id = new BigInteger("4809532081614990336");
+		BigInteger hier32Id = new BigInteger("8226896360947470336");
+		BigInteger hier321Id = new BigInteger("1150444940909479936");
+		BigInteger imsi = new BigInteger("344930000000011");
+		String neVersion = "11B";
+		
+		failureConfig.createRow(f);
+		failureConfig.createRow(f2);
+		userEquipmentConfig.createRow(ue);
+		userEquipmentConfig.createRow(ue2);
+		eventCauseConfig.createRow(ec);
+		eventCauseConfig.createRow(ec2);
+		operatorConfig.createRow(o);
+		operatorConfig.createRow(o2);
+		
+		Base_Data row = EntityCreator.getBase_Data(4, dateTime, 1000, hier3Id, hier32Id, hier321Id, imsi, neVersion, f, ue, ec, o);
+		Base_Data row2 = EntityCreator.getBase_Data(4, dateTime, 1001, hier3Id, hier32Id, hier321Id, imsi, neVersion, f2, ue2, ec2, o2);
+		
+		baseDataConfig.createRow(row);
+		baseDataConfig.createRow(row2);
+		
+		List<MySqlTable> expected = new ArrayList<MySqlTable>();
+		expected.add(row);
+		expected.add(row2);
+		
+		List<MySqlTable> result = baseDataConfig.viewRow();
+			
+		baseDataConfig.deleteRow(row);
+		baseDataConfig.deleteRow(row2);
+		
+		failureConfig.deleteRow(f);
+		failureConfig.deleteRow(f2);
+		userEquipmentConfig.deleteRow(ue);
+		userEquipmentConfig.deleteRow(ue2);
+		eventCauseConfig.deleteRow(ec);
+		eventCauseConfig.deleteRow(ec2);
+		operatorConfig.deleteRow(o);
+		operatorConfig.deleteRow(o2);
+		
+		assertNotNull(result);
+		assertEquals(expected.size(), result.size());
 		
 	}
 

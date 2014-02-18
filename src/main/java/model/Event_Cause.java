@@ -24,7 +24,7 @@ public class Event_Cause extends MySqlTable implements Serializable {
 
 	private String description;
 
-	//bi-directional many-to-one association to Base_Data
+	//uni-directional many-to-one association to Base_Data
 	@OneToMany(mappedBy="eventCause")
 	private List<Base_Data> baseData;
 
@@ -45,27 +45,5 @@ public class Event_Cause extends MySqlTable implements Serializable {
 
 	public void setDescription(String description) {
 		this.description = description;
-	}
-
-	public List<Base_Data> getBaseData() {
-		return this.baseData;
-	}
-
-	public void setBaseData(List<Base_Data> baseData) {
-		this.baseData = baseData;
-	}
-
-	public Base_Data addBaseData(Base_Data baseData) {
-		getBaseData().add(baseData);
-		baseData.setEventCause(this);
-
-		return baseData;
-	}
-
-	public Base_Data removeBaseData(Base_Data baseData) {
-		getBaseData().remove(baseData);
-		baseData.setEventCause(null);
-
-		return baseData;
 	}
 }
