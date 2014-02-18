@@ -6,8 +6,8 @@ import static org.junit.Assert.assertNotNull;
 import java.util.ArrayList;
 import java.util.List;
 
-import main.EntityCreator;
-import main.Event_CauseConfig;
+import config.EntityCreator;
+import config.Event_CauseConfig;
 import model.Event_Cause;
 import model.MySqlTable;
 

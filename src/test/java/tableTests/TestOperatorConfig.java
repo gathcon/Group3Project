@@ -5,8 +5,8 @@ import static org.junit.Assert.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import main.EntityCreator;
-import main.OperatorConfig;
+import config.EntityCreator;
+import config.OperatorConfig;
 import model.Operator;
 import model.MySqlTable;
 

@@ -9,3 +9,9 @@ select * from Failure;
 select * from Event_Cause;
 select * from Operator;
 select * from User_Equipment;
+
+drop table Base_Data;
+drop table Failure;
+drop table Event_Cause;
+drop table Operator;
+drop table User_Equipment;
