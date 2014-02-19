@@ -27,7 +27,7 @@ public class Operator extends MySqlTable implements Serializable {
 	@Column(name="operator_name")
 	private String operatorName;
 
-	//bi-directional many-to-one association to Base_Data
+	//uni-directional many-to-one association to Base_Data
 	@OneToMany(mappedBy="operator")
 	private List<Base_Data> baseData;
 
@@ -56,28 +56,6 @@ public class Operator extends MySqlTable implements Serializable {
 
 	public void setOperatorName(String operatorName) {
 		this.operatorName = operatorName;
-	}
-
-	public List<Base_Data> getBaseData() {
-		return this.baseData;
-	}
-
-	public void setBaseData(List<Base_Data> baseData) {
-		this.baseData = baseData;
-	}
-
-	public Base_Data addBaseData(Base_Data baseData) {
-		getBaseData().add(baseData);
-		baseData.setOperator(this);
-
-		return baseData;
-	}
-
-	public Base_Data removeBaseData(Base_Data baseData) {
-		getBaseData().remove(baseData);
-		baseData.setOperator(null);
-
-		return baseData;
 	}
 
 }

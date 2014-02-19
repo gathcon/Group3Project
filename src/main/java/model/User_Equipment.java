@@ -44,7 +44,7 @@ public class User_Equipment extends MySqlTable implements Serializable {
 	@Column(name="input_mode")
 	private String inputMode;
 
-	//bi-directional many-to-one association to Base_Data
+	//uni-directional many-to-one association to Base_Data
 	@OneToMany(mappedBy="userEquipment")
 	private List<Base_Data> baseData;
 
@@ -122,27 +122,4 @@ public class User_Equipment extends MySqlTable implements Serializable {
 	public void setVendorName(String vendorName) {
 		this.vendorName = vendorName;
 	}
-
-	public List<Base_Data> getBaseData() {
-		return this.baseData;
 	}
-
-	public void setBaseData(List<Base_Data> baseData) {
-		this.baseData = baseData;
-	}
-
-	public Base_Data addBaseData(Base_Data baseData) {
-		getBaseData().add(baseData);
-		baseData.setUserEquipment(this);
-
-		return baseData;
-	}
-
-	public Base_Data removeBaseData(Base_Data baseData) {
-		getBaseData().remove(baseData);
-		baseData.setUserEquipment(null);
-
-		return baseData;
-	}
-
-}

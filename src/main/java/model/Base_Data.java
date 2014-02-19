@@ -48,17 +48,17 @@ public class Base_Data extends MySqlTable implements Serializable {
 	@Column(name="ne_version")
 	private String neVersion;
 
-	//bi-directional many-to-one association to Failure
+	//uni-directional many-to-one association to Failure
 	@ManyToOne
 	@JoinColumn(name="failure_id")
 	private Failure failure;
 
-	//bi-directional many-to-one association to User_Equipment
+	//uni-directional many-to-one association to User_Equipment
 	@ManyToOne
 	@JoinColumn(name="ue_id")
 	private User_Equipment userEquipment;
 
-	//bi-directional many-to-one association to Event_Cause
+	//uni-directional many-to-one association to Event_Cause
 	@ManyToOne
 	@JoinColumns({
 		@JoinColumn(name="cause_code", referencedColumnName="cause_code"),
@@ -66,7 +66,7 @@ public class Base_Data extends MySqlTable implements Serializable {
 		})
 	private Event_Cause eventCause;
 
-	//bi-directional many-to-one association to Operator
+	//uni-directional many-to-one association to Operator
 	@ManyToOne
 	@JoinColumns({
 		@JoinColumn(name="mcc", referencedColumnName="mcc"),
