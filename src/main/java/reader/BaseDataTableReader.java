@@ -1,11 +1,16 @@
-package validation; 
+package reader; 
 
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Row;
+
+import validation.BaseDataValidator;
+
 import java.util.ArrayList;
+
+import logger.ErrorLogger;
 
 public class BaseDataTableReader extends TableReader {
     

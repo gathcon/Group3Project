@@ -1,6 +1,7 @@
-package validation; 
+package inputTests; 
 
 import static org.junit.Assert.*;
+
 //import static org.mockito.Mockito.*;
 //import static org.powermock.api.easymock.PowerMock.*;
 import org.junit.After;
@@ -12,8 +13,14 @@ import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.hssf.usermodel.HSSFRow;
+
+import reader.BaseDataTableReader;
+import validation.BaseDataValidator;
+
 import java.io.FileInputStream;
 import java.io.IOException;
+
+import logger.ErrorLogger;
 
 public class BaseDataTableReaderTest
 {

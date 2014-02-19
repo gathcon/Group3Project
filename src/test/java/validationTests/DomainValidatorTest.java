@@ -1,4 +1,4 @@
-package validation;
+package validationTests;
 
 import static org.junit.Assert.assertTrue;
 
@@ -11,8 +11,8 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.junit.Before;
 import org.junit.Test;
 
+import reader.Loader;
 import validation.DomainTableValidator;
-import validation.Loader;
 
 public class DomainValidatorTest {
 

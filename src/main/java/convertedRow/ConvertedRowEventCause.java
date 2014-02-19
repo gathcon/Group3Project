@@ -1,4 +1,4 @@
-package validation;
+package convertedRow;
 
 public class ConvertedRowEventCause extends ConvertedRow {
 

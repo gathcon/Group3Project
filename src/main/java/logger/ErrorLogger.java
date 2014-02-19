@@ -1,4 +1,4 @@
-package validation;
+package logger;
 
 
 import java.io.PrintWriter;
@@ -13,11 +13,12 @@ import org.apache.poi.hssf.usermodel.HSSFRow;
 
 public class ErrorLogger implements Serializable
 {
-	private Vector cellVectorHolder;
+	private static final long serialVersionUID = 1L;
+	private Vector<Vector<HSSFCell>> cellVectorHolder;
 	
 	public ErrorLogger()
 	{
-		cellVectorHolder = new Vector();
+		cellVectorHolder = new Vector<Vector<HSSFCell>>();
 	}
 	
 	public void addToLogVector(HSSFRow row)
@@ -25,7 +26,7 @@ public class ErrorLogger implements Serializable
 		try
 		{
 			Iterator cellIter = row.cellIterator();
-			Vector cellStoreVector=new Vector();
+			Vector<HSSFCell> cellStoreVector=new Vector<HSSFCell>();
 			
 			while (cellIter.hasNext())
 			{

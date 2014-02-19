@@ -147,6 +147,11 @@
 			<artifactId>slf4j-simple</artifactId>
 			<version>1.5.8</version>
 		</dependency>
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi</artifactId>
+			<version>3.10-beta2</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<plugins>

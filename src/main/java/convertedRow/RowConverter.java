@@ -1,9 +1,12 @@
-package validation;
+package convertedRow;
 
 import java.math.BigInteger;
+import java.util.Date;
 import java.util.Iterator;
 
 import org.apache.poi.hssf.usermodel.HSSFRow;
+
+import entityCreator.EntityType;
 
 public class RowConverter {
 
@@ -27,11 +30,14 @@ public class RowConverter {
         	String ne = row.getCell(9).getStringCellValue();
         	BigInteger imsi = BigInteger.valueOf((long)row.getCell(10).getNumericCellValue());
         	BigInteger h1 = BigInteger.valueOf((long)row.getCell(11).getNumericCellValue());
-        	BigInteger h2 = BigInteger.valueOf((long)row.getCell(11).getNumericCellValue());
-        	BigInteger h3 = BigInteger.valueOf((long)row.getCell(11).getNumericCellValue());
+        	BigInteger h2 = BigInteger.valueOf((long)row.getCell(12).getNumericCellValue());
+        	BigInteger h3 = BigInteger.valueOf((long)row.getCell(13).getNumericCellValue());
         	
-        	ConvertedRowBaseData cr = new ConvertedRowBaseData(date, event, failure, ue, market, operator, cell, duration, cause, ne, imsi, h1, h2, h3); 
-                 return cr;
+        	ConvertedRowBaseData baseDataRow = new ConvertedRowBaseData((int)cell, (int)duration, 
+        			h1, h2, h3, imsi, new Date((long) date), ne, (int)failure, (int)event, (int)cause, (int)ue, (int)market, 
+        			(int)operator);
+			
+                 return baseDataRow;
 
         case EVENTCAUSE:
 
@@ -39,16 +45,16 @@ public class RowConverter {
         	double eventId = row.getCell(1).getNumericCellValue();
         	String des = row.getCell(2).getStringCellValue();
         	
-        	ConvertedRowEventCause cr = new ConvertedEventCause(causeCode, eventId, des); 
-                 return cr;
+        	ConvertedRowEventCause eventCauseRow = new ConvertedRowEventCause((int)causeCode, (int)eventId, des); 
+                 return eventCauseRow;
 
         case FAILURE:
         	double failureClass = row.getCell(0).getNumericCellValue();
         	String description = row.getCell(1).getStringCellValue();
-        	ConvertedRowFailure cr = new ConvertedFailure(failureClass, description);
-        	return cr;
+        	ConvertedRowFailure failureRow = new ConvertedRowFailure((int)failureClass, description);
+        	return failureRow;
         
-        case UE: 
+        case USEREQUIPMENT: 
         	double tac = row.getCell(0).getNumericCellValue();
         	String marketName = row.getCell(1).getStringCellValue();
         	String manufacturer = row.getCell(2).getStringCellValue();
@@ -59,8 +65,8 @@ public class RowConverter {
         	String os = row.getCell(7).getStringCellValue();
         	String input = row.getCell(8).getStringCellValue();
         	
-        	ConvertedRowUserEquipment cr = new ConvertedUserEquipment(tac, marketName, manufacturer, access, model, vendor, uetype, os, input);
-        	return cr;
+        	ConvertedRowUserEquipment userEquipmentRow = new ConvertedRowUserEquipment((int) tac, marketName, manufacturer, access, model, vendor, uetype, os, input);
+        	return userEquipmentRow;
 
         case OPERATOR: 
         	double mcc = row.getCell(0).getNumericCellValue();
@@ -68,8 +74,8 @@ public class RowConverter {
         	String country = row.getCell(2).getStringCellValue();
         	String operatorO = row.getCell(3).getStringCellValue();
         	
-        	ConvertedRowOperator cr = new ConvertedOperator(mcc, mnc, country, operatorO);
-        	return cr;
+        	ConvertedRowOperator operatorRow = new ConvertedRowOperator((int)mcc, (int)mnc, country, operatorO);
+        	return operatorRow;
         	
     }	
 		return null;		

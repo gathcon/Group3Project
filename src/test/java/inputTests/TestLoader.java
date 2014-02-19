@@ -1,4 +1,4 @@
-package validation;
+package inputTests;
 
 import static org.junit.Assert.*;
 
@@ -11,6 +11,10 @@ import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.junit.Before;
 import org.junit.Test;
+
+import entityCreator.EntityType;
+import reader.Loader;
+import validation.BaseDataValidator;
 
 public class TestLoader {
 	
