@@ -1,11 +1,11 @@
 package queries;
 
 import java.util.List;
-import model.MySqlTable;
+import model.TableRow;
 
 public interface ITableQueries {
 	
-	public List<MySqlTable> findAllRows();
+	public List<TableRow> findAllRows();
 	
-	public <T> MySqlTable findRowById(T id);
+	public <T> TableRow findRowById(T id);
 }

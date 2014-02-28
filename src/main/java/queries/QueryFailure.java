@@ -8,7 +8,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 import model.Failure;
-import model.MySqlTable;
+import model.TableRow;
 
 public class QueryFailure implements Serializable, ITableQueries {
 	
@@ -21,9 +21,9 @@ private static final long serialVersionUID = 1L;
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<MySqlTable> findAllRows() {
+	public List<TableRow> findAllRows() {
 		EntityManager em = emf.createEntityManager();
-		List<MySqlTable> failures = (List<MySqlTable>) em.createNamedQuery("Failure.findAll").getResultList();
+		List<TableRow> failures = (List<TableRow>) em.createNamedQuery("Failure.findAll").getResultList();
 		em.close();
 		
 		return failures;

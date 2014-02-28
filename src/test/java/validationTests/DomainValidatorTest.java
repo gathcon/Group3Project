@@ -5,12 +5,13 @@ import static org.junit.Assert.assertTrue;
 import java.io.FileInputStream;
 import java.io.IOException;
 
-import org.apache.poi.hssf.usermodel.HSSFCell;
-import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.Test;
 
+import persistence.PersistenceUtil;
+import entityCreator.EntityType;
 import reader.Loader;
 import validation.DomainTableValidator;
 
@@ -27,8 +28,8 @@ public class DomainValidatorTest {
     
     
     public DomainValidatorTest(){
-        workbook1 = "Dataset.xls";
-        workbook2 = "TestData.xls";
+        workbook1 = "TestData.xls";
+        workbook2 = "TestDataSample.xls";
         
     }
     
@@ -88,5 +89,14 @@ public class DomainValidatorTest {
         //1 Good row of data per workbook and the column headers row
         
     }
+    
+    @AfterClass
+	public static void cleanup() {
+		PersistenceUtil.removeAll(EntityType.BASEDATA);
+		PersistenceUtil.removeAll(EntityType.EVENTCAUSE);
+		PersistenceUtil.removeAll(EntityType.FAILURE);
+		PersistenceUtil.removeAll(EntityType.OPERATOR);
+		PersistenceUtil.removeAll(EntityType.USEREQUIPMENT);
+	}
     
 }

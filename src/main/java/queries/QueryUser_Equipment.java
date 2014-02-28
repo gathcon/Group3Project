@@ -8,7 +8,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 import model.User_Equipment;
-import model.MySqlTable;
+import model.TableRow;
 
 public class QueryUser_Equipment implements Serializable, ITableQueries {
 	
@@ -20,10 +20,10 @@ private static final long serialVersionUID = 1L;
 		return emf.createEntityManager();
 	}
 
-	public List<MySqlTable> findAllRows() {
+	public List<TableRow> findAllRows() {
 		EntityManager em = emf.createEntityManager();
 		@SuppressWarnings("unchecked")
-		List<MySqlTable> user_Equipments = (List<MySqlTable>) em.createNamedQuery("User_Equipment.findAll").getResultList();
+		List<TableRow> user_Equipments = (List<TableRow>) em.createNamedQuery("User_Equipment.findAll").getResultList();
 		em.close();
 		
 		return user_Equipments;

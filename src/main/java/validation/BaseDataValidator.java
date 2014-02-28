@@ -95,9 +95,18 @@ public class BaseDataValidator extends SubValidator {
         HSSFRow row;
         HSSFCell sheetCell1, sheetCell2;
         
-        if(cell1 == null || cell2 == null){
-           return false;
-        }
+        if(cell1 == null && cell2 == null){
+            return false;
+         }
+         
+         if(table.equals("Event-Cause Table") && cell1 == null){
+         	return singleColumnCheck(cell2, table);
+         }
+         
+         if(table.equals("Event-Cause Table") && cell2 == null){
+         	return singleColumnCheck(cell1, table);
+         }
+         
         //check both passed in cells are numeric
         if(cell1.getCellType() == 0 && cell2.getCellType() == 0){
             // get numeric values

@@ -1,51 +1,42 @@
 package model;
 
 import java.io.Serializable;
-
 import javax.persistence.*;
-
 import java.util.List;
 
-
-/**
- * The persistent class for the User_Equipment database table.
- * 
- */
 @Entity
-@NamedQueries( {
-	@NamedQuery(name="User_Equipment.findAll", query="SELECT ue FROM User_Equipment ue"),
-	@NamedQuery(name = "User_Equipment.findById", query = "SELECT ue FROM User_Equipment ue where ue.userEquipmentId=:userEquipmentId"),
-})
-public class User_Equipment extends MySqlTable implements Serializable {
+@NamedQueries({
+		@NamedQuery(name = "User_Equipment.findAll", query = "SELECT ue FROM User_Equipment ue"),
+		@NamedQuery(name = "User_Equipment.findById", query = "SELECT ue FROM User_Equipment ue where ue.userEquipmentId=:userEquipmentId"), })
+public class User_Equipment extends TableRow implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name="user_equipment_id")
+	@Column(name = "user_equipment_id")
 	private int userEquipmentId;
-	
-	@Column(name="marketing_name")
+
+	@Column(name = "marketing_name")
 	private String marketingName;
-	
+
 	private String manufacturer;
-	
-	@Column(name="access_capability")
+
+	@Column(name = "access_capability")
 	private String accessCapability;
-	
+
 	private String model;
-	
-	@Column(name="vendor_name")
+
+	@Column(name = "vendor_name")
 	private String vendorName;
-	
-	@Column(name="ue_type")
+
+	@Column(name = "ue_type")
 	private String ueType;
-	
+
 	private String os;
 
-	@Column(name="input_mode")
+	@Column(name = "input_mode")
 	private String inputMode;
 
-	//uni-directional many-to-one association to Base_Data
-	@OneToMany(mappedBy="userEquipment")
+	@OneToMany(mappedBy = "userEquipment")
 	private List<Base_Data> baseData;
 
 	public User_Equipment() {
@@ -122,4 +113,4 @@ public class User_Equipment extends MySqlTable implements Serializable {
 	public void setVendorName(String vendorName) {
 		this.vendorName = vendorName;
 	}
-	}
+}

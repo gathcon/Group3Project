@@ -7,71 +7,58 @@ import javax.persistence.*;
 import java.math.BigInteger;
 import java.util.Date;
 
-
-/**
- * The persistent class for the Base_Data database table.
- * 
- */
 @Entity
-@NamedQueries( {
-	@NamedQuery(name="Base_Data.findAll", query="SELECT b FROM Base_Data b"),
-	@NamedQuery(name = "Base_Data.findById", query = "SELECT b FROM Base_Data b where b.dataId=:dataId"),
-})
-public class Base_Data extends MySqlTable implements Serializable {
+@NamedQueries({
+		@NamedQuery(name = "Base_Data.findAll", query = "SELECT b FROM Base_Data b"),
+		@NamedQuery(name = "Base_Data.findById", query = "SELECT b FROM Base_Data b where b.dataId=:dataId"), })
+public class Base_Data extends TableRow implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="data_id")
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "data_id")
 	private int dataId;
 
-	@Column(name="cell_id")
+	@Column(name = "cell_id")
 	private int cellId;
 
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name="date_time")
+	@Column(name = "date_time")
 	private Date dateTime;
 
 	private int duration;
 
-	@Column(name="hier3_id")
+	@Column(name = "hier3_id")
 	private BigInteger hier3Id;
 
-	@Column(name="hier32_id")
+	@Column(name = "hier32_id")
 	private BigInteger hier32Id;
 
-	@Column(name="hier321_id")
+	@Column(name = "hier321_id")
 	private BigInteger hier321Id;
 
 	private BigInteger imsi;
 
-	@Column(name="ne_version")
+	@Column(name = "ne_version")
 	private String neVersion;
 
-	//uni-directional many-to-one association to Failure
 	@ManyToOne
-	@JoinColumn(name="failure_id")
+	@JoinColumn(name = "failure_id")
 	private Failure failure;
 
-	//uni-directional many-to-one association to User_Equipment
 	@ManyToOne
-	@JoinColumn(name="ue_id")
+	@JoinColumn(name = "ue_id")
 	private User_Equipment userEquipment;
 
-	//uni-directional many-to-one association to Event_Cause
 	@ManyToOne
 	@JoinColumns({
-		@JoinColumn(name="cause_code", referencedColumnName="cause_code"),
-		@JoinColumn(name="event_id", referencedColumnName="event_id")
-		})
+			@JoinColumn(name = "cause_code", referencedColumnName = "cause_code"),
+			@JoinColumn(name = "event_id", referencedColumnName = "event_id") })
 	private Event_Cause eventCause;
 
-	//uni-directional many-to-one association to Operator
 	@ManyToOne
-	@JoinColumns({
-		@JoinColumn(name="mcc", referencedColumnName="mcc"),
-		@JoinColumn(name="mnc", referencedColumnName="mnc")
-		})
+	@JoinColumns({ @JoinColumn(name = "mcc", referencedColumnName = "mcc"),
+			@JoinColumn(name = "mnc", referencedColumnName = "mnc") })
 	private Operator operator;
 
 	public Base_Data() {
@@ -180,5 +167,4 @@ public class Base_Data extends MySqlTable implements Serializable {
 	public void setOperator(Operator operator) {
 		this.operator = operator;
 	}
-
 }

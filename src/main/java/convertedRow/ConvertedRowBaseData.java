@@ -64,13 +64,13 @@ public class ConvertedRowBaseData extends ConvertedRow {
 		
 		this.userEquipmentId = uetype;
 		QueryUser_Equipment que = new QueryUser_Equipment();
-		userEquipment = que.findRowById(userEquipment);
+		userEquipment = que.findRowById(userEquipmentId);
 		
 		this.mcc = mcc;
 		this.mnc = mnc;
 		OperatorPK oPK = new OperatorPK(mcc, mnc);
 		QueryOperator qo = new QueryOperator();
-		qo.findRowById(oPK);
+		operator = qo.findRowById(oPK);
 	}
 
 	public int getCellId() {

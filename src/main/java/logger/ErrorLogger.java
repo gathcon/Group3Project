@@ -3,12 +3,13 @@ package logger;
 
 import java.io.PrintWriter;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.Iterator;
-import java.util.Scanner;
 import java.util.Vector;
 
 import org.apache.poi.hssf.usermodel.HSSFCell; 
 import org.apache.poi.hssf.usermodel.HSSFRow; 
+import org.apache.poi.ss.usermodel.Cell;
 
 
 public class ErrorLogger implements Serializable
@@ -25,7 +26,7 @@ public class ErrorLogger implements Serializable
 	{
 		try
 		{
-			Iterator cellIter = row.cellIterator();
+			Iterator<Cell> cellIter = row.cellIterator();
 			Vector<HSSFCell> cellStoreVector=new Vector<HSSFCell>();
 			
 			while (cellIter.hasNext())
@@ -44,19 +45,18 @@ public class ErrorLogger implements Serializable
 	
 	public void writeToFile() 
 	{
-		Scanner fileName = new Scanner(System.in);
 		PrintWriter file;
 		String name;
-		Vector cellStoreVector;
+		Vector<HSSFCell> cellStoreVector;
 		
 		try
 		{
-			System.out.println("Please enter the name of the file: ");
-			name = fileName.nextLine();
+			Date date = new Date();
+			name = "log/log" + date.toString() + ".txt";
 			file = new PrintWriter(name);
 			for (int i = 0; i < cellVectorHolder.size(); i++)
 			{
-				cellStoreVector = (Vector) cellVectorHolder.elementAt(i);
+				cellStoreVector = (Vector<HSSFCell>) cellVectorHolder.elementAt(i);
 				file.println();
 				for (int j = 0; j < cellStoreVector.size(); j++)
 				{

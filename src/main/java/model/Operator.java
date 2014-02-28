@@ -1,22 +1,14 @@
 package model;
 
 import java.io.Serializable;
-
 import javax.persistence.*;
-
 import java.util.List;
 
-
-/**
- * The persistent class for the Operator database table.
- * 
- */
 @Entity
-@NamedQueries( {
-	@NamedQuery(name="Operator.findAll", query="SELECT o FROM Operator o"),
-	@NamedQuery(name = "Operator.findById", query = "SELECT o FROM Operator o where o.id=:id"),
-})
-public class Operator extends MySqlTable implements Serializable {
+@NamedQueries({
+		@NamedQuery(name = "Operator.findAll", query = "SELECT o FROM Operator o"),
+		@NamedQuery(name = "Operator.findById", query = "SELECT o FROM Operator o where o.id=:id"), })
+public class Operator extends TableRow implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@EmbeddedId
@@ -24,11 +16,10 @@ public class Operator extends MySqlTable implements Serializable {
 
 	private String country;
 
-	@Column(name="operator_name")
+	@Column(name = "operator_name")
 	private String operatorName;
 
-	//uni-directional many-to-one association to Base_Data
-	@OneToMany(mappedBy="operator")
+	@OneToMany(mappedBy = "operator")
 	private List<Base_Data> baseData;
 
 	public Operator() {

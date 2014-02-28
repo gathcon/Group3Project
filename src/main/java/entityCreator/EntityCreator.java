@@ -13,41 +13,45 @@ import model.Base_Data;
 import model.Event_Cause;
 import model.Event_CausePK;
 import model.Failure;
+import model.TableRow;
 import model.Operator;
 import model.OperatorPK;
 import model.User_Equipment;
 
 public class EntityCreator {
 
-	public static void getEntity(ConvertedRow cr) {
+	public static TableRow getEntity(ConvertedRow cr) {
+		
+		TableRow row = null;
 
 		if (cr instanceof ConvertedRowBaseData) {
 			ConvertedRowBaseData convertedRowBD = (ConvertedRowBaseData) cr;
-			getBase_Data(convertedRowBD.getCellId(), convertedRowBD.getDateTime(), convertedRowBD.getDuration(),
+			row = getBase_Data(convertedRowBD.getCellId(), convertedRowBD.getDateTime(), convertedRowBD.getDuration(),
 					convertedRowBD.getHier3Id(), convertedRowBD.getHier32Id(), convertedRowBD.getHier321Id(),
 					convertedRowBD.getImsi(), convertedRowBD.getNeVersion(), convertedRowBD.getFailure(),
 					convertedRowBD.getUserEquipment(), convertedRowBD.getEventCause(), convertedRowBD.getOperator());
 
 		} else if (cr instanceof ConvertedRowEventCause) {
 			ConvertedRowEventCause convertedRowEC = (ConvertedRowEventCause) cr;
-			getEvent_Cause(convertedRowEC.getCausecode(), convertedRowEC.getEventid(), convertedRowEC.getDecription());
+			row = getEvent_Cause(convertedRowEC.getCausecode(), convertedRowEC.getEventid(), convertedRowEC.getDecription());
 
 		} else if (cr instanceof ConvertedRowFailure) {
 			ConvertedRowFailure convertedRowF = (ConvertedRowFailure) cr;
-			getFailure(convertedRowF.getFailureid(), convertedRowF.getDescription());
+			row = getFailure(convertedRowF.getFailureid(), convertedRowF.getDescription());
 
 		} else if (cr instanceof ConvertedRowUserEquipment) {
 			ConvertedRowUserEquipment convertedRowUE = (ConvertedRowUserEquipment) cr;
-			getUser_Equipment(convertedRowUE.getTac(), convertedRowUE.getMarketingname(),
+			row = getUser_Equipment(convertedRowUE.getTac(), convertedRowUE.getMarketingname(),
 					convertedRowUE.getManufacturer(), convertedRowUE.getAccesscapability(),
 					convertedRowUE.getModel(), convertedRowUE.getVendorname(), convertedRowUE.getUetype(),
 					convertedRowUE.getOs(), convertedRowUE.getInput_mode());
 
 		} else if (cr instanceof ConvertedRowOperator) {
 			ConvertedRowOperator convertedRowO = (ConvertedRowOperator) cr;
-			getOperator(convertedRowO.getMcc(), convertedRowO.getMnc(), convertedRowO.getCountry(),
+			row = getOperator(convertedRowO.getMcc(), convertedRowO.getMnc(), convertedRowO.getCountry(),
 					convertedRowO.getOperator());
 		}
+		return row;
 	}
 
 	public static Failure getFailure(int id, String description) {
@@ -121,7 +125,6 @@ public class EntityCreator {
 		row.setHier321Id(hier321Id);
 		row.setImsi(imsi);
 		row.setNeVersion(neVersion);
-
 		row.setFailure(failure);
 		row.setUserEquipment(userEquipment);
 		row.setEventCause(eventCause);

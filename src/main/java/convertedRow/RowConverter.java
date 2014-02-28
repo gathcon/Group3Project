@@ -1,10 +1,8 @@
 package convertedRow;
 
 import java.math.BigInteger;
-import java.util.Date;
-import java.util.Iterator;
-
 import org.apache.poi.hssf.usermodel.HSSFRow;
+import org.apache.poi.hssf.usermodel.HSSFDateUtil;
 
 import entityCreator.EntityType;
 
@@ -34,7 +32,7 @@ public class RowConverter {
         	BigInteger h3 = BigInteger.valueOf((long)row.getCell(13).getNumericCellValue());
         	
         	ConvertedRowBaseData baseDataRow = new ConvertedRowBaseData((int)cell, (int)duration, 
-        			h1, h2, h3, imsi, new Date((long) date), ne, (int)failure, (int)event, (int)cause, (int)ue, (int)market, 
+        			h1, h2, h3, imsi, HSSFDateUtil.getJavaDate(date), ne, (int)failure, (int)event, (int)cause, (int)ue, (int)market, 
         			(int)operator);
 			
                  return baseDataRow;

@@ -8,7 +8,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 import model.Base_Data;
-import model.MySqlTable;
+import model.TableRow;
 
 public class QueryBase_Data implements Serializable, ITableQueries {
 	
@@ -20,10 +20,10 @@ public class QueryBase_Data implements Serializable, ITableQueries {
 		return emf.createEntityManager();
 	}
 
-	public List<MySqlTable> findAllRows() {
+	public List<TableRow> findAllRows() {
 		EntityManager em = emf.createEntityManager();
 		@SuppressWarnings("unchecked")
-		List<MySqlTable> base_Data = (List<MySqlTable>) em.createNamedQuery("Base_Data.findAll").getResultList();
+		List<TableRow> base_Data = (List<TableRow>) em.createNamedQuery("Base_Data.findAll").getResultList();
 		em.close();
 		
 		return base_Data;

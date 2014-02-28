@@ -22,12 +22,8 @@ public class DomainTableReader extends SubReader {
 	
 	private int[] ColumnsInSheet = {14,3,2,9,4};
 	
-	
-	
-	private HSSFRow row;
 	private HSSFCell currentCell;
 	private ArrayList<Integer> removalList;
-	
 	
 	public DomainTableReader(ErrorLogger errorLogger){
 		validator = new DomainTableValidator();
@@ -40,12 +36,9 @@ public class DomainTableReader extends SubReader {
 	public void read(HSSFSheet sheet) {
 
 		sheetNumber = findSheetNum(sheet);
-		
-		//System.out.println("SheetNumber is " + sheetNumber);
-		
+				
 		currentColumnAmount = ColumnsInSheet[sheetNumber];
 		loopThroughColumnsIn(sheet);
-		
 		
 	}
 
@@ -75,17 +68,15 @@ public class DomainTableReader extends SubReader {
 	private void loopThroughColumnsIn(HSSFSheet sheet) {
 		
 		for(int currentColumn = 0; currentColumn < currentColumnAmount; currentColumn++){
-			
 		
 			validator.changeDataType(sheet, currentColumn, sheetNumber);
 			
 			loopThroughRowsInColumn(sheet, currentColumn);
 			
-			
 			for(int i = 0; i < removalList.size(); i++){
 			
 				sheet.removeRow(sheet.getRow(removalList.get(i)));
-				System.out.println("																	Row deleted " + removalList.get(i));
+				//System.out.println("Row deleted " + removalList.get(i));
 				
 			}
 			
@@ -100,8 +91,7 @@ public class DomainTableReader extends SubReader {
 
 	private void loopThroughRowsInColumn(HSSFSheet sheet, int currentColumn) {
 		
-		
-		
+	
 		for(Row row: sheet){
 			
 			HSSFRow currentRow = (HSSFRow) row;
@@ -122,8 +112,8 @@ public class DomainTableReader extends SubReader {
 				
 					errorLogger.addToLogVector(currentRow);
 					removalList.add(currentRow.getRowNum());
-					System.out.println("Sheet: " + sheet.getSheetName() + "| The Cell (" + currentColumn + ", " + currentRow.getRowNum() + ") is NOT VALID");
-					System.out.println("Row " + currentRow.getRowNum() + " added to removal list");
+					//System.out.println("Sheet: " + sheet.getSheetName() + "| The Cell (" + currentColumn + ", " + currentRow.getRowNum() + ") is NOT VALID");
+					//System.out.println("Row " + currentRow.getRowNum() + " added to removal list");
 					
 				}
 				

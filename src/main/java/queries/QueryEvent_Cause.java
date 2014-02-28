@@ -8,7 +8,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 import model.Event_Cause;
-import model.MySqlTable;
+import model.TableRow;
 
 public class QueryEvent_Cause implements Serializable, ITableQueries {
 	
@@ -20,10 +20,10 @@ public class QueryEvent_Cause implements Serializable, ITableQueries {
 		return emf.createEntityManager();
 	}
 
-	public List<MySqlTable> findAllRows() {
+	public List<TableRow> findAllRows() {
 		EntityManager em = emf.createEntityManager();
 		@SuppressWarnings("unchecked")
-		List<MySqlTable> event_Causes = (List<MySqlTable>) em.createNamedQuery("Event_Cause.findAll").getResultList();
+		List<TableRow> event_Causes = (List<TableRow>) em.createNamedQuery("Event_Cause.findAll").getResultList();
 		em.close();
 		
 		return event_Causes;

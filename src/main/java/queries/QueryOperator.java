@@ -8,7 +8,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 import model.Operator;
-import model.MySqlTable;
+import model.TableRow;
 
 public class QueryOperator implements Serializable, ITableQueries {
 	
@@ -20,10 +20,10 @@ private static final long serialVersionUID = 1L;
 		return emf.createEntityManager();
 	}
 
-	public List<MySqlTable> findAllRows() {
+	public List<TableRow> findAllRows() {
 		EntityManager em = emf.createEntityManager();
 		@SuppressWarnings("unchecked")
-		List<MySqlTable> operators = (List<MySqlTable>) em.createNamedQuery("Operator.findAll").getResultList();
+		List<TableRow> operators = (List<TableRow>) em.createNamedQuery("Operator.findAll").getResultList();
 		em.close();
 		
 		return operators;

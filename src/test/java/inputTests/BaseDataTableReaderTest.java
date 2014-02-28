@@ -2,11 +2,8 @@ package inputTests;
 
 import static org.junit.Assert.*;
 
-//import static org.mockito.Mockito.*;
-//import static org.powermock.api.easymock.PowerMock.*;
-import org.junit.After;
+import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.Ignore;
 import org.apache.poi.hssf.usermodel.HSSFCell;
@@ -14,6 +11,8 @@ import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 
+import persistence.PersistenceUtil;
+import entityCreator.EntityType;
 import reader.BaseDataTableReader;
 import validation.BaseDataValidator;
 
@@ -45,7 +44,7 @@ public class BaseDataTableReaderTest
 
     @Before
     public void setUp() throws IOException {
-        workBook = new HSSFWorkbook(new FileInputStream("ericsson.xls"));
+        workBook = new HSSFWorkbook(new FileInputStream("TestData.xls"));
         sheet = workBook.getSheet("Base Data");
         l = new ErrorLogger();
         reader = new BaseDataTableReader(workBook, l);
@@ -105,6 +104,15 @@ public class BaseDataTableReaderTest
     	reader.removeRowsFromSheetThatAreInArrayList(sheet);
     	assertTrue(reader.getSizeOfArrayList() == 0);  	
     }
+    
+    @AfterClass
+	public static void cleanup() {
+		PersistenceUtil.removeAll(EntityType.BASEDATA);
+		PersistenceUtil.removeAll(EntityType.EVENTCAUSE);
+		PersistenceUtil.removeAll(EntityType.FAILURE);
+		PersistenceUtil.removeAll(EntityType.OPERATOR);
+		PersistenceUtil.removeAll(EntityType.USEREQUIPMENT);
+	}
 
 
 }
