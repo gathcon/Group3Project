@@ -98,11 +98,5 @@ public class ConvertedRowUserEquipment extends ConvertedRow{
 	public void setInput_mode(String input_mode) {
 		this.input_mode = input_mode;
 	}
-	
-	
-	
-	
-	
-	
 
 }

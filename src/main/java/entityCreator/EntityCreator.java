@@ -8,6 +8,7 @@ import convertedRow.ConvertedRowBaseData;
 import convertedRow.ConvertedRowEventCause;
 import convertedRow.ConvertedRowFailure;
 import convertedRow.ConvertedRowOperator;
+import convertedRow.ConvertedRowUser;
 import convertedRow.ConvertedRowUserEquipment;
 import model.Base_Data;
 import model.Event_Cause;
@@ -16,6 +17,7 @@ import model.Failure;
 import model.TableRow;
 import model.Operator;
 import model.OperatorPK;
+import model.User;
 import model.User_Equipment;
 
 public class EntityCreator {
@@ -50,7 +52,12 @@ public class EntityCreator {
 			ConvertedRowOperator convertedRowO = (ConvertedRowOperator) cr;
 			row = getOperator(convertedRowO.getMcc(), convertedRowO.getMnc(), convertedRowO.getCountry(),
 					convertedRowO.getOperator());
+		
+		} else if (cr instanceof ConvertedRowUser) {
+			ConvertedRowUser convertedRowU = (ConvertedRowUser) cr;
+			row = getUser(convertedRowU.getUserName(), convertedRowU.getPassword(), convertedRowU.getUserType());
 		}
+		
 		return row;
 	}
 
@@ -88,6 +95,16 @@ public class EntityCreator {
 
 		return row;
 
+	}
+	
+	public static User getUser(String userName, String password, String userType) {
+
+		User row = new User();
+		row.setUserName(userName);
+		row.setPassword(password);
+		row.setUserType(userType);
+
+		return row;
 	}
 
 	public static User_Equipment getUser_Equipment(int id,
